@@ -50,7 +50,21 @@
         .clearfix
           %p.pull-left Materials
           %p.lead.small.pull-right= @book.materials
-  .mb-80
+
+  .general-message-wrap.divider-lg
+    %h3.in-gold-500.mb-25 Write a Review
+    = form_tag(books_path, method: 'post', class: 'max-600 mb-80') do
+      .form-group
+        %label.control-label.input-label Rating
+        = number_field_tag :rating, nil, min: 1, max: 10, class: 'form-control max-60'
+        %span.help-block
+          Please enter your rating of the book (number from 0 to 5)
+      .form-group
+        %label.control-label.input-label Your comments
+        = text_area_tag :text, nil, cols: 40, rows: 5, class: 'form-control'
+      = submit_tag 'Post', class: 'btn btn-default'
+
+  .mb-25
     %h3.in-gold-500.mb-25 Reviews (#{@book.notes.count})
     = render :partial => 'comments', collection: @book.notes, as: :note
 

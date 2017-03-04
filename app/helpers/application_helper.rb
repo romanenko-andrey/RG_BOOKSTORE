@@ -34,7 +34,7 @@ module ApplicationHelper
   end
 
   def books_in_cart
-    session["cart"]["orders"].count.to_s
+    session['cart']['orders'].count.to_s
   rescue
     '0'
   end
@@ -42,11 +42,11 @@ module ApplicationHelper
   def field_class_when_error(flash_name, field_name)
     errors = flash[flash_name]
     return "".html_safe if errors.nil?
-    "has-error".html_safe if errors["#{field_name}"]
+    'has-error'.html_safe if errors["#{field_name}"]
   end
 
   def show_error_message(form_name, field_name)
     errors = flash[form_name]
-    "collapse".html_safe if errors.nil? || errors["#{field_name}"].nil?
+    'collapse'.html_safe if errors.nil? || errors["#{field_name}"].nil?
   end
 end

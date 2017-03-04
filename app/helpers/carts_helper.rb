@@ -26,5 +26,4 @@ module CartsHelper
   def order_total
     total_sum - coupon.to_f + delivery_cost.to_f
   end
-
 end

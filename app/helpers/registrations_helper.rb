@@ -1,4 +1,3 @@
 module RegistrationsHelper
 
-
 end

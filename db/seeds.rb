@@ -209,9 +209,9 @@ Book.create! [
 ]
 
 User.first.notes.create(text: "Thank you BookStore, I was very pleased to receive my order for the Moleskine diary so soon after placing the order.",
-                        book: Book.all.first, rating: 5)
+                        book: Book.all.first, rating: 5, checked: true)
 User.last.notes.create(text: "If ‘Get a better job’ had landed on my desk a year ago, I might have been dismissive of it. Instead I was prepared to be open-minded. There have been many occasions where I turned to career books with practical activities to look for some inspiration when developing education activities for learners or assessment.",
-                        book: Book.all.first, rating: 3)
+                        book: Book.all.first, rating: 3, checked: true)
 
 Order.create( user: User.first, discont: '15.00', state: "in_progress", 
               delivery_methods: "Delivery Next Day!", delivery_cost: "5", 

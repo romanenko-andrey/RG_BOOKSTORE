@@ -26,8 +26,8 @@ class RegistrationsController < Devise::RegistrationsController
         user.shipping_address.update @shipping_form.attributes 
         unless @shipping_form.valid? || @billing_form.valid?
           set_flash_message :error,  :address_error
-          redirect_to edit_user_registration_path, flash: { "billing_address": @billing_form.errors, 
-                                                            "shipping_address": @shipping_form.errors }
+          redirect_to edit_user_registration_path, flash: { 'billing_address': @billing_form.errors,
+                                                            'shipping_address': @shipping_form.errors }
           return
         end
       end

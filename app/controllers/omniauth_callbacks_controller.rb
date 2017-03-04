@@ -1,5 +1,4 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-
      [:google, :facebook, :github].each do |provider|
      define_method "#{provider}" do
         #byebug
@@ -15,6 +14,4 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         end
      end
    end
-
-  
 end

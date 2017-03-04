@@ -7,9 +7,9 @@ class BooksController < ApplicationController
 
   # GET /books
   def index
-    @category = session[:category] = params[:category] || session[:category] || "All"
+    @category = session[:category] = params[:category] || session[:category] || 'All'
     @sort_method = session[:sort] = params[:sort] || session[:sort] || 'Newest first'
-    @books =  @category == "All" ? Book : Category.find_by(name: @category).books
+    @books =  @category == '"All' ? Book : Category.find_by(name: @category).books
     @books = sort(@books).page(params[:page])
   rescue
     @category = 'All'
@@ -23,6 +23,13 @@ class BooksController < ApplicationController
     redirect_to root_path unless @book
   end
 
+  def create
+    byebug
+    @note = Note.new(user: @current_user, book: @book)
+    @note.update(note_params)
+    redirect_to books_path, notice: 'Thanks for Review. It will be published as soon as Admin will approve it.'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
@@ -31,11 +38,11 @@ class BooksController < ApplicationController
 
     def sort(books)
       case @sort_method
-      when "Popular first"
+      when 'Popular first'
         books.popular
-      when "Price: Low to hight"
+      when 'Price: Low to hight'
         books.from_low_to_high_price
-      when "Price: Top to down"
+      when 'Price: Top to down'
         books.from_hight_to_low_price
       else
         books.newest
@@ -44,7 +51,7 @@ class BooksController < ApplicationController
 
     def set_categories
       @categories_info = []
-      @categories_info << {name: "All", count:  Book.count}
+      @categories_info << {name: 'All', count:  Book.count}
       Category.all.each do |category|
         @categories_info << {name:  category.name, count: category.books.count}
       end
@@ -55,4 +62,9 @@ class BooksController < ApplicationController
     def book_params
       params.require(:book).permit(:name, :author, :price, :description, :demensions, :materials, :public_year, :photo1, :photo2, :photo3, :photo4, :title_photo, :alt)
     end
+
+     def note_params
+      params.permit(:rating, :text).to_h
+    end
+
 end

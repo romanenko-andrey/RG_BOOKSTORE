@@ -1,6 +1,6 @@
 module CheckoutHelper
   def hide_cradit_card_code(credit_card)
-    '** ** **' + credit_card['card_number'][-4, 4]
+    '** ** **' + credit_card[-4, 4]
   end
 
   def checout_step(index, current_step)

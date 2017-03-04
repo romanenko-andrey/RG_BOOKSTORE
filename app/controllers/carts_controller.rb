@@ -3,11 +3,9 @@ class CartsController < ApplicationController
   before_action :set_cart
   before_action :find_cart_position, only: [:update, :destroy]
   after_action :save_cart, only: [:update]
-  
-  #get /cart
+
   def index
     @orders.each do |order| 
-      #book = Book.where(id: order["book_id"]).pluck(:id, :price, :name, :photo)
       book = Book.find(order["id"])
       order["price"] = book.price
       order["name"] = book.name
@@ -31,10 +29,10 @@ class CartsController < ApplicationController
 
   def update
     case 
-    when cart_add_params["sum"]
+    when cart_add_params['sum']
       add_book_to_cart 
       redirect_to books_path, notice: 'Book have successfully added.'
-    when cart_change_params["change"]
+    when cart_change_params['change']
       change_books_number
       redirect_to carts_path, notice: 'Count of book have successfully changed.' 
     when params[:del]
@@ -53,32 +51,32 @@ class CartsController < ApplicationController
 
   def set_cart
     #byebug
-    @cart = session["cart"] || {}
-    @cart["orders"] ||= []
-    @orders = @cart["orders"] 
-    @cart["coupon"] ||= "0.00"
+    @cart = session['cart'] || {}
+    @cart['orders'] ||= []
+    @orders = @cart['orders']
+    @cart['coupon'] ||= '0.00'
   end
 
   def find_cart_position
-    @pos = @orders.index{|order| order["id"] == params[:id]}
+    @pos = @orders.index{ |order| order['id'] == params[:id] }
     @order = @pos && @orders[@pos]
   end
 
   def change_books_number
-    @order["sum"] = @order["sum"].to_i + cart_change_params[:change].to_i 
-    @order["sum"] = 0 if @order["sum"] < 0 
+    @order['sum'] = @order['sum'].to_i + cart_change_params[:change].to_i
+    @order['sum'] = 0 if @order['sum'] < 0
   end
 
   def add_book_to_cart
     if @pos
-      @order["sum"] = @order["sum"].to_i + cart_add_params[:sum].to_i  
+      @order['sum'] = @order['sum'].to_i + cart_add_params[:sum].to_i
     else
       @orders << cart_add_params
     end
   end
 
   def save_cart
-    session["cart"] = @cart
+    session['cart'] = @cart
   end
   
   def cart_add_params

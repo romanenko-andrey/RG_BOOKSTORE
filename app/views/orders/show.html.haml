@@ -1,4 +1,43 @@
 %main.container.general-main-wrap
+  %h1.general-title-margin= "Order #{@order.number}"
+  .row.mb-20
+    .col-sm-3
+      %h3.general-subtitle Shipping Address
+      %p.general-address
+        = full_name(@shipping)
+        %br
+        = @shipping.addressee
+        %br
+        = "#{@shipping.city} #{@shipping.zip}"
+        %br
+        = countries_select_options[@shipping.country.to_i].first
+        %br
+        = "Phone #{@shipping.phone}"
+    .col-sm-3
+      %h3.general-subtitle Billing Address
+      %p.general-address
+        = full_name(@billing)
+        %br
+        = @billing.addressee
+        %br
+        = "#{@billing.city} #{@billing.zip}"
+        %br
+        = countries_select_options[@billing.country.to_i].first
+        %br
+        = "Phone #{@billing.phone}"
+    .col-sm-3
+      %h3.general-subtitle Shipments
+      %p.general-address
+        = humanize(@order.delivery_methods)
+        %br
+        = @order.delivery_cost
+    .col-sm-3
+      %h3.general-subtitle Payment Information
+      %p.general-address
+        = hide_cradit_card_code(@order.card_number)
+        %br
+        = @order.mmyy
+
   = render 'checkout/order_books'
   
   .text-center.general-text-right

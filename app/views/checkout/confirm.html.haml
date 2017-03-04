@@ -38,7 +38,7 @@
     .col-sm-3
       %h3.general-subtitle Payment Information
       %p.general-address
-        = hide_cradit_card_code(@cart['credit_card'])
+        = hide_cradit_card_code(@cart['credit_card']['card_number'])
         = link_to "edit", wizard_path(:payment), class: 'general-edit'
         %br
         = @cart['credit_card']['mmyy']

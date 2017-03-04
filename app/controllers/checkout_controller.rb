@@ -132,9 +132,9 @@ class CheckoutController < ApplicationController
       @orders = @order.items
       @address = @user.shipping_address
     else
-      @cart = session["cart"]
-      @orders = @cart["orders"]
-      @credit_card = @cart["credit_card"] || {}
+      @cart = session['cart']
+      @orders = @cart['orders']
+      @credit_card = @cart['credit_card'] || {}
       @order = Order.new(@credit_card)
     end
   rescue
@@ -143,9 +143,9 @@ class CheckoutController < ApplicationController
 
   def save_cart
     if session['cart'] && (session['cart']['finished'] == true)
-      session["cart"] = {}
+      session['cart'] = {}
     else
-      session["cart"] = @cart
+      session['cart'] = @cart
     end
   end
 
