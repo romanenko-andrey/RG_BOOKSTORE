@@ -25,3 +25,21 @@
   border: none;
   background: inherit;
 }
+
+.cvv-helper:after {
+  content: "3-digit security code, usualy found on the back of you card. American Express cards has 4-digit code, located on the front";
+  font-family: sans-serif;
+  position: absolute;
+  top: 16px;
+  left: -300px;
+  width: 300px;
+  padding: 5px;
+  border: 1px solid grey;
+  background-color: rgba(200,200,200,0.5);
+  text-align: right;
+  display: none;
+}
+
+.cvv-helper:hover::after{
+  display: block;
+}

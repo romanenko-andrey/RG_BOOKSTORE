@@ -1,5 +1,3 @@
-%p#notice= notice
-
 %main.container
   = link_to books_path, class: "general-back-link" do
     %i.fa.fa-long-arrow-left.mr-15
@@ -25,21 +23,21 @@
             %p.h1.in-gold-500.mt-10= toEURO(@book.price)
           .col-xs-5.col-md-3
             .input-group.general-position
-              %a.input-link{href: "#"}
+              %a.input-link{href: "#", name: 'button_minus'}
                 %i.fa.fa-minus.line-height-40
-              = text_field_tag :sum, '1', class: 'form-control quantity-input'
-              %a.input-link{href: "#"}
+              = text_field_tag :sum, '1', class: 'form-control quantity-input input_book_count'
+              %a.input-link{href: "#", name: 'button_plus'}
                 %i.fa.fa-plus.line-height-40
           .col-xs-7.col-md-5
-            / hidden_field_tag :book_id, "#{@book.id}"
-            /%button.btn.btn-default.pull-right.general-position Add to Cart
             = submit_tag 'Add to Cart', class: 'btn btn-default pull-right general-position'
                 
       .general-info-wrap.divider-lg
-        %p Description
+        %p#Readmore Description
         %p.lead.small.line-height-2
-          = "#{short(@book.description)} ..."
-          %a.in-gold-500.ml-10{href: "#"} Read More
+          #short_descr= "#{short(@book.description)} ..."
+          #long_descr= @book.description
+          %a.in-gold-500.ml-10{href: "#Readmore"} Read More
+
       .general-info-wrap.divider-lg
         .clearfix
           %p.pull-left Year of publication

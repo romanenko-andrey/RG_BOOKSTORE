@@ -7,5 +7,5 @@ class CreditCardForm < Rectify::Form
   validates :card_number, :presence => true, length: { is: 16 }
   validates :card_name, :presence => true
   validates :mmyy, :presence => true, length: { is: 5 }, format: /\A\d{2}\/\d{2}\z/
-  validates :cvv, :presence =>true, length: { is: 3 }
+  validates :cvv, :presence =>true, length: { in: 3..4 }
 end

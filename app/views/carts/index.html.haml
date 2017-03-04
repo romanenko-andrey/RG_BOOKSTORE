@@ -22,7 +22,7 @@
                 .input-group
                   = button_tag class: 'but-link input-link', name: 'change', value: "-1" do
                     %i.fa.fa-minus.line-heaght-40
-                  = text_field_tag order["id"], input_value(order), name: "input_book_count", class: 'form-control quantity-input'
+                  = text_field_tag order["id"], input_value(order), name: "input_book_count", class: 'form-control quantity-input', readonly: true
                   = button_tag class: 'but-link input-link', name: 'change', value: "+1" do
                     %i.fa.fa-plus.line-heaght-40
 
@@ -59,7 +59,7 @@
               .input-group
                 = button_tag class: 'but-link input-link', name: 'change', value: "-1" do
                   %i.fa.fa-minus.line-heaght-40
-                = text_field_tag order["id"], input_value(order), name: "input_book_count", class: 'form-control quantity-input'
+                = text_field_tag order["id"], input_value(order), name: "input_book_count", class: 'form-control quantity-input', readonly: true
                 = button_tag class: 'but-link input-link', name: 'change', value: "+1" do
                   %i.fa.fa-plus.line-heaght-40
             %td

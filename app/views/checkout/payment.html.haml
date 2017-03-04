@@ -21,7 +21,7 @@
         .form-group.relative{ :class => field_class_when_error(:credit_card, :cvv) }
           = f.label :cvv, "CVV", :class=>'control-label input-label'
           = f.number_field :cvv, class: 'form-control', placeholder: 'CVV'
-          %i.fa.fa-question-circle.general-form-help
+          %i.fa.fa-question-circle.general-form-help.cvv-helper
     .general-text-align
       %p.in-gold-500.font-18 Order Summary
       %table.general-summary-table

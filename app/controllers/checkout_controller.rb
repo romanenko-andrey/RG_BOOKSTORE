@@ -1,4 +1,8 @@
-class CheckoutController < ApplicationController #< Wicked::WizardController
+class CheckoutController < ApplicationController 
+  rescue_from ActionController::RoutingError, :with => :error_render_method
+  rescue_from ActionView::Template::Error, :with => :error_view_template
+  rescue_from Wicked::Wizard::InvalidStepError, :with => :error_step_in_path_params
+
   include Wicked::Wizard
   steps :address, :delivery, :payment, :confirm, :complete
 
@@ -17,18 +21,7 @@ class CheckoutController < ApplicationController #< Wicked::WizardController
   end
 
   def show
-    if @step == :complete
-      if session['last_order']
-        @order = Order.find(session['last_order'])
-        @orders = @order.items
-        @address = @user.shipping_address
-      end
-    else
-      if @cart['orders'].nil? || @cart['orders'].empty?
-        redirect_to cart_path 
-        return
-      end
-    end
+    redirect_to books_path and return if @orders.nil? || @orders.empty?
     render_wizard
   end
 
@@ -58,8 +51,8 @@ class CheckoutController < ApplicationController #< Wicked::WizardController
     order_params = {
       user: @user, number: generate_order_number, items: @orders, discont: @cart['coupon'], 
       delivery_methods: @cart['delivery'].first, delivery_cost: @cart['delivery'].last, 
-      total_cost: totally_cost, state: 'in_progress'    
-    }
+      total_cost: totally_cost, state: 'in_progress' }
+
     @order.update(order_params)
     @order.save
     flash[:notice] = "Thank you. Your order state now is 'In Progress'"
@@ -132,24 +125,25 @@ class CheckoutController < ApplicationController #< Wicked::WizardController
     books_cost - @cart['coupon'].to_f + @cart['delivery'].last.to_f
   end
 
-  def clear_session
-    session["cart"] = {}
-  end
-
   def set_cart
-    @cart = session["cart"]
-   
-    @orders = @cart["orders"]
-    @credit_card = @cart["credit_card"] || {}
-    @order = Order.new(@credit_card)
+    if step == :complete && session['last_order']
+      @cart = {}
+      @order = Order.find(session['last_order'])
+      @orders = @order.items
+      @address = @user.shipping_address
+    else
+      @cart = session["cart"]
+      @orders = @cart["orders"]
+      @credit_card = @cart["credit_card"] || {}
+      @order = Order.new(@credit_card)
+    end
   rescue
     redirect_to cart_path
   end
 
   def save_cart
-    #byebug
-    if session['cart']['finished'] == true
-      clear_session
+    if session['cart'] && (session['cart']['finished'] == true)
+      session["cart"] = {}
     else
       session["cart"] = @cart
     end
@@ -162,6 +156,21 @@ class CheckoutController < ApplicationController #< Wicked::WizardController
       ['delivery_next_days', '1 - 2 days', '28.50']
     ]
     @shipping_index = params[:delivery_method]
+  end
+
+  def error_render_method
+    flash[:error] = 'Incorrect route. Plase try again'
+    redirect_to books_path
+  end
+
+  def error_view_template
+    flash[:error] = 'Sorry, but there was error until rendering the page. Plase try again'
+    redirect_to books_path
+  end
+
+  def error_step_in_path_params
+    flash[:error] = 'Sorry, but there was incorrect params in the path routes. Plase try again'
+    redirect_to carts_path
   end
 
   def billing_address_params
