@@ -1,0 +1,16 @@
+.col-sm-6.col-md-3
+  .general-thumb-wrap
+    .thumbnail.general-thumbnail
+      = image_tag book.title_photo, alt: book.alt, class: ['img-shadow', 'general-thumbnail-img']
+      .thumb-hover
+        .general-thumb-link-wrap
+          = link_to book_path(id: book.id), class: "thumb-hover-link" do
+            %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
+          %a.thumb-hover-link{href: "#"}
+            %i.fa.fa-shopping-cart.thumb-icon
+  .mb-35
+    .clearfix
+      %p.pull-right.font-16.in-gold-500= toEURO(book.price)
+      %p.title.mr-55= book.name
+    %span.divider-sm
+    %p.lead.small= authors_to_string(book.authors)

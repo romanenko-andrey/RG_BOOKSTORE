@@ -1,0 +1,27 @@
+.general-thumb-info .title {
+  height: 60px;
+}
+
+.general-thumb-info .lead {
+  height: 30px;
+}
+
+.mlr-20 {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.alert.fade {
+  opacity: 0;
+  -webkit-transition: opacity 0.15s linear;
+  -moz-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+}
+.alert.fade.in {
+  opacity: 1;
+}
+.but-link {
+  padding: 0;
+  border: none;
+  background: inherit;
+}

@@ -1,0 +1,45 @@
+%header.navbar.navbar-default
+  .container
+    .navbar-header
+      %button.navbar-toggle.pull-left{type: "button", 'data-toggle': "collapse", 'data-target': "#navbar"}
+        %span.sr-only
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand Bookstore
+      = link_to carts_path, class: "shop-link pull-right visible-xs" do
+        %span.shop-icon
+          %span.shop-quantity= books_in_cart
+    = link_to carts_path, class: "shop-link pull-right hidden-xs" do
+      %span.shop-icon
+        %span.shop-quantity= books_in_cart
+    #navbar.navbar-collapse.collapse.pl-30{'aria-expanded': "false"}
+      .visible-xs
+        %button.close{type: "button", 'aria-label': "Close"}
+          %span{'aria-hidden': "true"} &times;
+        %ul.nav.navbar-nav
+          %li
+            = link_to "Home", root_path
+          %li
+            %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"} Shop
+            %ul#menu.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
+              - @categories.each do |category|
+                %li= link_to "#{category}", books_path(category: category), class: "collapse-link"
+          = render 'login_menu'    
+         
+      .hidden-xs
+        %ul.nav.navbar-nav
+          %li
+            = link_to "Home", root_path
+          %li.dropdown
+            %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"} Shop
+            %ul.dropdown-menu
+              - @categories.each do |category|
+                %li= link_to "#{category}", books_path(category: category), class: "collapse-link"
+          = render 'login_menu' 
+  
+  = devise_error_messages!
+
+
+/= render 'flash_messages' if !flash.empty?
+/ = flash_messages(:close, :fade, :fade_in)

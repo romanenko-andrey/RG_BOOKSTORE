@@ -1,0 +1,179 @@
+class CheckoutController < ApplicationController #< Wicked::WizardController
+  include Wicked::Wizard
+  steps :address, :delivery, :payment, :confirm, :complete
+
+  before_action :authenticate_user!
+  before_action :set_user, :set_cart, :set_shipping_methods_list
+  before_action { @update_error = false }
+
+  after_action :save_cart
+
+  def new
+    if @orders.empty?
+      redirect_to books_path, notice: 'You have not select any book to the cart ...' 
+    else
+      redirect_to checkout_path(wizard_steps.first)
+    end
+  end
+
+  def show
+    if @step == :complete
+      if session['last_order']
+        @order = Order.find(session['last_order'])
+        @orders = @order.items
+        @address = @user.shipping_address
+      end
+    else
+      if @cart['orders'].nil? || @cart['orders'].empty?
+        redirect_to cart_path 
+        return
+      end
+    end
+    render_wizard
+  end
+
+  def update
+    case @step
+    when :address
+      render_wizard(@user) if update_addresses?
+    when :delivery
+      render_wizard(@user) if update_shipping_method?
+    when :payment
+      render_wizard(@user) if update_credit_card?
+    when :confirm
+      create_new_order
+      render_wizard(@user)
+    end
+    redirect_to checkout_path(@step) if @update_error
+  end
+
+  protected
+
+  def create_new_order
+    last_order = Order.where(user: @user, total_cost: totally_cost).last
+    if last_order 
+      session['last_order'] = last_order.id
+      return
+    end
+    order_params = {
+      user: @user, number: generate_order_number, items: @orders, discont: @cart['coupon'], 
+      delivery_methods: @cart['delivery'].first, delivery_cost: @cart['delivery'].last, 
+      total_cost: totally_cost, state: 'in_progress'    
+    }
+    @order.update(order_params)
+    @order.save
+    flash[:notice] = "Thank you. Your order state now is 'In Progress'"
+    session['cart']['finished'] = true
+    session['last_order'] = @order.id
+  end
+
+  def generate_order_number
+    DateTime.now.to_i.to_s
+  end
+
+  def update_credit_card?
+    @credit_info = CreditCardForm.from_params(credit_card_params)
+    session['cart']['credit_card'] = @credit_info.attributes
+    unless @credit_info.valid?
+      flash[:credit_card] = @credit_info.errors 
+      flash[:error] = I18n.t('devise.registrations.credit_card_error')
+      @update_error  = true
+      return false
+    end
+    true
+  end
+
+  def update_shipping_method?
+    if @shipping_index.nil?
+      flash[:notice] = 'You need to select any method of delivery book to you'
+      @update_error = true
+      return false
+    end
+    @cart['delivery'] = @shipping_list[@shipping_index.to_i]
+    true
+  end
+
+  def update_addresses?
+    update_billing_address
+    update_shipping_address
+    if flash[:billing_address] || flash[:shipping_address]
+      flash[:error] = I18n.t('devise.registrations.address_error')
+      @update_error = true
+      return false
+    end
+    true
+  end
+
+  def update_billing_address
+    @billing_form = AddressForm.from_params(billing_address_params)
+    @user.billing_address.update @billing_form.attributes 
+    flash[:billing_address] = @billing_form.errors unless @billing_form.valid?
+  end
+
+  def update_shipping_address
+    @shipping_form = AddressForm.from_params(shipping_address_params)
+    if @shipping_form.identical
+      @billing_form.identical = true
+      @user.shipping_address.update @billing_form.attributes
+    else
+      @user.shipping_address.update @shipping_form.attributes
+      flash[:shipping_address] = @shipping_form.errors unless @shipping_form.valid?
+    end
+  end
+
+  def set_user
+    @user = current_user
+    @billing = @user.billing_address
+    @shipping = @user.shipping_address
+  end
+
+  def totally_cost
+    books_cost = @orders.reduce(0){|total, order| total + order['sum'].to_f * order['price'].to_f} 
+    books_cost - @cart['coupon'].to_f + @cart['delivery'].last.to_f
+  end
+
+  def clear_session
+    session["cart"] = {}
+  end
+
+  def set_cart
+    @cart = session["cart"]
+   
+    @orders = @cart["orders"]
+    @credit_card = @cart["credit_card"] || {}
+    @order = Order.new(@credit_card)
+  rescue
+    redirect_to cart_path
+  end
+
+  def save_cart
+    #byebug
+    if session['cart']['finished'] == true
+      clear_session
+    else
+      session["cart"] = @cart
+    end
+  end
+
+  def set_shipping_methods_list
+    @shipping_list = [
+      ['self-delivery', 'up to month', '0'],
+      ['delivery_at_door!', '3 - 7 days', '12.10'],
+      ['delivery_next_days', '1 - 2 days', '28.50']
+    ]
+    @shipping_index = params[:delivery_method]
+  end
+
+  def billing_address_params
+    params.require(:user).require(:billing_address_attributes).permit([:first_name, :last_name, :addressee, :city, :country, :zip, :phone, :identical]).to_h
+  end
+
+  def shipping_address_params
+    params.require(:user).require(:shipping_address_attributes).permit([:first_name, :last_name, :addressee, :city, :country, :zip, :phone, :identical]).to_h
+  end
+
+  def credit_card_params
+    params.require(:order).permit(:card_number, :card_name, :mmyy, :cvv).to_h
+  end
+
+end

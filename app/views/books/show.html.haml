@@ -1,0 +1,59 @@
+%p#notice= notice
+
+%main.container
+  = link_to books_path, class: "general-back-link" do
+    %i.fa.fa-long-arrow-left.mr-15
+    Back to results
+  .row
+    .col-sm-6
+      .product-gallery
+        .mb-20
+          = image_tag @book.photo1, alt: @book.alt, class: ['img', 'img-responsive']
+        .images.clearfix
+          %a.img-link{href: "#"}
+            = image_tag @book.photo2, alt: @book.alt
+          %a.img-link{href: "#"}
+            = image_tag @book.photo3, alt: @book.alt
+          %a.img-link{href: "#"}
+            = image_tag @book.photo4, alt: @book.alt
+    .col-sm-6
+      %h1.mt-res-0= @book.name
+      %p.lead.small= authors_to_string(@book.authors)
+      .row
+        =form_tag(cart_path(@book.id), method: 'patch') do
+          .col-xs-12.col-md-4
+            %p.h1.in-gold-500.mt-10= toEURO(@book.price)
+          .col-xs-5.col-md-3
+            .input-group.general-position
+              %a.input-link{href: "#"}
+                %i.fa.fa-minus.line-height-40
+              = text_field_tag :sum, '1', class: 'form-control quantity-input'
+              %a.input-link{href: "#"}
+                %i.fa.fa-plus.line-height-40
+          .col-xs-7.col-md-5
+            / hidden_field_tag :book_id, "#{@book.id}"
+            /%button.btn.btn-default.pull-right.general-position Add to Cart
+            = submit_tag 'Add to Cart', class: 'btn btn-default pull-right general-position'
+                
+      .general-info-wrap.divider-lg
+        %p Description
+        %p.lead.small.line-height-2
+          = "#{short(@book.description)} ..."
+          %a.in-gold-500.ml-10{href: "#"} Read More
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left Year of publication
+          %p.lead.small.pull-right= @book.public_year
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left Dimensions
+          %p.lead.small.pull-right= @book.dimensions
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left Materials
+          %p.lead.small.pull-right= @book.materials
+  .mb-80
+    %h3.in-gold-500.mb-25 Reviews (#{@book.notes.count})
+    = render :partial => 'comments', collection: @book.notes, as: :note
+
+

@@ -1,0 +1,52 @@
+%main.container.general-main-wrap
+  = render 'checkout_list', step: 5
+  
+  .text-center.mb-40
+    %h3.general-subtitle Thank You for your Order!
+    %p.fw-300= "An order confirmation has been has been sent to #{@user.email}"
+  .row.mb-20
+    .col-sm-6
+      .visible-xs
+        %p.general-order-number.mb-0= "Order ##{@order.number}"
+        %p.general-address.mb-30= format_date_to_YYYYMMDD(@order.created_at)
+      %p.general-address
+        = full_name(@address)
+        %br
+        = @address.addressee
+        %br
+        = "#{@address.city} #{@address.zip}"
+        %br
+        = countries_select_options[@address.country.to_i].first
+        %br
+        = "Phone #{@billing.phone}"
+    .col-sm-6.hidden-xs.text-right
+      %p.general-order-number.mb-0= "Order ##{@order.number}"
+      %p.general-address.mb-30= format_date_to_YYYYMMDD(@order.created_at)
+  
+  = render 'order_books'
+
+  .text-center.general-text-right
+    %p.in-gold-500.font-18 Order Summary
+    %table.general-summary-table.general-summary-table-right.general-text-right
+      %tr
+        %td
+          %p.font-16 Subtotal:
+        %td
+          %p.font-16= toEURO(total_sum)
+      %tr
+        %td
+          %p.font-16 Discont:
+        %td
+          %p.font-16= toEURO(@order['discont'])
+      %tr
+        %td
+          %p.font-16 Delivery:
+        %td
+          %p.font-16= toEURO(@order['delivery_cost'])
+      %tr
+        %td
+          %strong.font-18 Order Total:
+        %td
+          %strong.font-18= toEURO(@order['total_cost'])
+  .text-center
+    = link_to "Back to Store", books_path, class: 'btn btn-default mb-20'

@@ -1,0 +1,88 @@
+%main.container.general-main-wrap
+  %h1.general-title-margin Cart
+  .visible-xs
+    - @orders.each do |order|
+      = form_tag(cart_path(order["id"]), method: 'patch') do
+        .general-cart-item.divider-lg-bottom
+          = button_tag class: 'close general-cart-close', name: 'del', value: order["id"], 'aria-label': "close" do
+            %span{'aria-hidden': "true"} &times;
+          .general-img-wrap-table
+            = image_tag order['photo'], class: ['cart-img-shadow']
+          %p.title= order['name']
+          %table.table
+            %tr
+              %td
+                %span.in-grey-600 Price
+              %td
+                %span.font-16.in-gold-500= toEURO(order['price'])
+            %tr
+              %td.vertical-middle
+                %span.in-grey-600 Quantity
+              %td
+                .input-group
+                  = button_tag class: 'but-link input-link', name: 'change', value: "-1" do
+                    %i.fa.fa-minus.line-heaght-40
+                  = text_field_tag order["id"], input_value(order), name: "input_book_count", class: 'form-control quantity-input'
+                  = button_tag class: 'but-link input-link', name: 'change', value: "+1" do
+                    %i.fa.fa-plus.line-heaght-40
+
+            %tr
+              %td
+                %span.in-grey-600 SubTotal
+              %td
+                %span.font-16.in-gold-500.sub_total= toEURO(sub_total order)
+
+  .hidden-xs
+    %table.table.table-hover
+      %tr.no-hover
+        %th.col-pic.pl-0
+          %span.in-grey-600 Product
+        %th.col-title
+        %th.col-price
+          %span.in-grey-600 Price
+        %th.col-quantity
+          %span.in-grey-600 Quantity
+        %th.col-total
+          %span.in-grey-600 SubTotal
+        %th.col-close
+      - @orders.each do |order|
+        = form_tag(cart_path(order["id"]), method: 'patch') do
+          %tr   
+            %td
+              .general-img-wrap-table
+                = image_tag order['photo'], class: ['cart-img-shadow pull-left']
+            %td
+              %p.title= order['name']
+            %td
+              %span.font-16.in-gold-500= toEURO(order['price'])
+            %td  
+              .input-group
+                = button_tag class: 'but-link input-link', name: 'change', value: "-1" do
+                  %i.fa.fa-minus.line-heaght-40
+                = text_field_tag order["id"], input_value(order), name: "input_book_count", class: 'form-control quantity-input'
+                = button_tag class: 'but-link input-link', name: 'change', value: "+1" do
+                  %i.fa.fa-plus.line-heaght-40
+            %td
+              %span.font-16.in-gold-500.sub_total= toEURO(sub_total order)
+            %td
+              = button_tag class: 'close general-cart-close', name: 'del', value: order["id"], 'aria-label': "close" do
+                %span{'aria-hidden': "true"} &times;
+ 
+  .general-order-wrap.mt-10 
+    .row
+      .col-sm-4
+        = form_tag(carts_path, method: 'post') do
+          .input-group.general-input-group
+            = label_tag(:coupon, "Enter Your Coupon Code", class: "input-label")
+            = text_field_tag :coupon, '', placeholder: "Enter Your Coupon Code", class: 'form-control mb-30'
+            %div
+              %button.btn.btn-primary.mr-5.mb-15.visible-xs-inline-block Apply Coupon
+              %button.btn.btn-primary.mb-15.res-block Update cart
+      .col-sm-8
+        .res-mr-200.text-center.general-text-right
+          %p.in-gold-500.font-18 Order Summary
+          %table.general-summary-table.general-summary-table-right.general-text-right
+            = render 'checkout/summary'
+          = link_to 'Checkout', new_checkout_path, class: "btn btn-default mb-20 visible-xs-inline-block"
+  .text-center
+    = link_to 'Checkout', new_checkout_path, class: "btn btn-default mb-20 hidden-xs inline-block"
