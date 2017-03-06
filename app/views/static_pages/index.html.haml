@@ -21,8 +21,6 @@
   .mb-35
     %h3 Best Sellers
     .row
-      /- @bestsellers.each do |best|
-      /  = render partial: 'best', locals: { book: best }
       = render :partial => 'best', collection: @bestsellers, as: :book
     
 

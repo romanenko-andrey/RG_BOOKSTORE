@@ -1,11 +1,8 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show]
+  before_action :set_book
+  before_action :set_user
   before_action :set_categories
 
-  #before_action :authenticate_user!, except: [:index, :show ]
-  #before_action :user_signed_in?, except: [:index, :show ]
-
-  # GET /books
   def index
     @category = session[:category] = params[:category] || session[:category] || 'All'
     @sort_method = session[:sort] = params[:sort] || session[:sort] || 'Newest first'
@@ -15,25 +12,31 @@ class BooksController < ApplicationController
     @category = 'All'
     @sort_method  = 'Newest first'
     @books = Book
-    @books= sort(@books).page(params[:page])
+    @books = sort(@books).page(params[:page])
   end
 
-  # GET /books/1
   def show
     redirect_to root_path unless @book
   end
 
   def create
     byebug
-    @note = Note.new(user: @current_user, book: @book)
-    @note.update(note_params)
-    redirect_to books_path, notice: 'Thanks for Review. It will be published as soon as Admin will approve it.'
+    @note = Note.new(user: @user, book: @book)
+    if @note.update(note_params)
+      redirect_to books_path, notice: I18n.t('books.create.success')
+    else
+      flash[:error] = @note.errors.messages.join(' ,')
+      redirect_to book_path(@book), alert: I18n.t('books.create.error')
+    end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_book
       @book = Book.find_by(id: params[:id])
+    end
+
+    def set_user
+      @user = current_user
     end
 
     def sort(books)
@@ -58,7 +61,6 @@ class BooksController < ApplicationController
       @categories = Category.pluck(:name) 
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
       params.require(:book).permit(:name, :author, :price, :description, :demensions, :materials, :public_year, :photo1, :photo2, :photo3, :photo4, :title_photo, :alt)
     end
@@ -66,5 +68,4 @@ class BooksController < ApplicationController
      def note_params
       params.permit(:rating, :text).to_h
     end
-
 end

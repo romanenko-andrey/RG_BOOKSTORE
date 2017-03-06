@@ -14,7 +14,7 @@ class CheckoutController < ApplicationController
 
   def new
     if @orders.empty?
-      redirect_to books_path, notice: 'You have not select any book to the cart ...' 
+      redirect_to books_path, notice: I18n.t('checkout.new.empty_list_of_book')
     else
       redirect_to checkout_path(wizard_steps.first)
     end
@@ -55,7 +55,7 @@ class CheckoutController < ApplicationController
 
     @order.update(order_params)
     @order.save
-    flash[:notice] = "Thank you. Your order state now is 'In Progress'"
+    flash[:notice] = I18n.t('checkout.new_order.success')
     session['cart']['finished'] = true
     session['last_order'] = @order.id
   end
@@ -78,7 +78,7 @@ class CheckoutController < ApplicationController
 
   def update_shipping_method?
     if @shipping_index.nil?
-      flash[:notice] = 'You need to select any method of delivery book to you'
+      flash[:alert] = I18n.t('checkout.shipping_method.error')
       @update_error = true
       return false
     end
@@ -159,18 +159,16 @@ class CheckoutController < ApplicationController
   end
 
   def error_render_method
-    flash[:error] = 'Incorrect route. Plase try again'
-    redirect_to books_path
+    #flash[:alert] = I18n.t('application.routes.error')
+    redirect_to books_path, alert: I18n.t('application.routes.error')
   end
 
   def error_view_template
-    flash[:error] = 'Sorry, but there was error until rendering the page. Plase try again'
-    redirect_to books_path
+    redirect_to books_path, alert: I18n.t('application.view_render.error')
   end
 
   def error_step_in_path_params
-    flash[:error] = 'Sorry, but there was incorrect params in the path routes. Plase try again'
-    redirect_to carts_path
+    redirect_to carts_path, alert: I18n.t('application.checkout_step.error')
   end
 
   def billing_address_params
@@ -184,5 +182,4 @@ class CheckoutController < ApplicationController
   def credit_card_params
     params.require(:order).permit(:card_number, :card_name, :mmyy, :cvv).to_h
   end
-
 end

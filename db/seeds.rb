@@ -11,9 +11,10 @@ Country.destroy_all
 Order.destroy_all
 
 Country.create! [
-  { name: "USA" },
-  { name: "Canada" },
-  { name: "Mexica" },
+  { name: "USA", zip: '00' },
+  { name: "Canada", zip: '01' },
+  { name: "Mexica" , zip: '02' },
+  { name: "Ukraine", zip: '38' },
 ]
 
 User.create! [

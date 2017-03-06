@@ -6,10 +6,7 @@ Rails.application.routes.draw do
   resources :carts
   resources :checkout
 
-  #get 'checkout/:id', to: 'checkout#show', id: [:address, :delivery, :payment, :confirm, :complete]
-
   root 'static_pages#index'
 
   get '*path', to: 'static_pages#index'
-
 end

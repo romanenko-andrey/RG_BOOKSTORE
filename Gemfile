@@ -42,14 +42,26 @@ gem 'omniauth-github'
 
 gem 'rectify'
 gem 'wicked'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'ffaker'
+gem 'rails_admin'
+gem 'rails_admin_aasm'
+gem 'cancancan'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  #gem 'byebug', platform: :mri
   gem 'byebug'
+  gem 'factory_girl_rails'
+  gem 'letter_opener_web'
+  gem 'rspec-rails'
+  gem 'wisper-rspec'
+  gem 'with_model'
+  gem 'rails-controller-testing'
+  gem 'capybara'
+  gem 'capybara-email'
+  gem 'capybara-screenshot'
+  gem 'database_cleaner'
+  gem 'poltergeist'
+  gem 'shoulda'
+  gem 'shoulda-matchers'
 end
 
 group :development do

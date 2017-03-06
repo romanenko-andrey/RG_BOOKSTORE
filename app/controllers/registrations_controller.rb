@@ -1,4 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
+  include Rectify::ControllerHelpers
 
   def update
     super do |user|

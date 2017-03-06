@@ -1,5 +1,4 @@
 class CartsController < ApplicationController
-  #before_action :authenticate_user!
   before_action :set_cart
   before_action :find_cart_position, only: [:update, :destroy]
   after_action :save_cart, only: [:update]
@@ -20,9 +19,9 @@ class CartsController < ApplicationController
 
   def create
     @cart['coupon'] = params[:coupon].to_f
-    flash[:notice] = 'Coupon have successfully updated.' 
+    flash[:notice] = I18n.t('carts.create.success')
   rescue
-    flash[:alert] = 'Coupon number is incorrect!'   
+    flash[:alert] = I18n.t('carts.create.error')  
   ensure
     redirect_to carts_path
   end
@@ -31,13 +30,13 @@ class CartsController < ApplicationController
     case 
     when cart_add_params['sum']
       add_book_to_cart 
-      redirect_to books_path, notice: 'Book have successfully added.'
+      redirect_to books_path, notice: I18n.t('carts.update.success.book_add')
     when cart_change_params['change']
       change_books_number
-      redirect_to carts_path, notice: 'Count of book have successfully changed.' 
+      redirect_to carts_path, notice: I18n.t('carts.update.success.change_count')
     when params[:del]
       destroy
-      redirect_to carts_path, notice: 'The book have successfully deleted.'
+      redirect_to carts_path, notice: I18n.t('carts.update.success.delete')
     end
   end
 
@@ -45,12 +44,9 @@ class CartsController < ApplicationController
     @orders.delete_at(@pos)
   end
 
-
-
   private
 
   def set_cart
-    #byebug
     @cart = session['cart'] || {}
     @cart['orders'] ||= []
     @orders = @cart['orders']
