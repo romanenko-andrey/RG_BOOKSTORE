@@ -10,7 +10,7 @@
         %br
         = "#{@shipping.city} #{@shipping.zip}"
         %br
-        = countries_select_options[@shipping.country.to_i].first
+        = countries_select_options(@shipping.country.to_i).name
         %br
         = "Phone #{@shipping.phone}"
     .col-sm-3
@@ -22,7 +22,7 @@
         %br
         = "#{@billing.city} #{@billing.zip}"
         %br
-        = countries_select_options[@billing.country.to_i].first
+        = countries_select_options(@shipping.country.to_i).name
         %br
         = "Phone #{@billing.phone}"
     .col-sm-3

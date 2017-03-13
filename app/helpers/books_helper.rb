@@ -13,6 +13,19 @@ module BooksHelper
   end
 
   def checked(note)
-    note.checked? ? 'Verified Reviewer' : 'Not-verified Reviewer'
+    case note.status 
+    when 'approved' then 'Verified Reviewer'
+    when 'rejected' then 'Blocked messages'
+    else
+      'Not-verified Reviewer'
+    end
+  end
+
+  def title_photo(book)
+    book.photos.first.file.url
+  end
+
+  def book_photo(book, pos)
+    pos >= book.photos.count ? book.photos.first.file.url : book.photos[pos].file.url
   end
 end

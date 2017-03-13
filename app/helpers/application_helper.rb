@@ -5,8 +5,12 @@ module ApplicationHelper
     "€#{sprintf('%.2f', value.to_f)}"
   end
 
-  def short(text)
-    text[0, MaxSizeOfShortDescriptions]
+  def markdown_short(text)
+    Maruku.new("#{text[0, MaxSizeOfShortDescriptions]}...").to_html.html_safe 
+  end
+
+  def markdown_text(text)
+    Maruku.new(text).to_html.html_safe 
   end
 
   def full_name(user)
@@ -29,8 +33,8 @@ module ApplicationHelper
      Time.at(date).utc.strftime("%Y-%m-%d") if date
   end
 
-  def countries_select_options
-    Country.all.map{|c| [c.name,c.id] }
+  def countries_select_options(id = nil)
+    id ? Country.find_by_id(id) : Country.all.map{|c| ["#{c.name} (#{c.zip})", c.id] }
   end
 
   def books_in_cart

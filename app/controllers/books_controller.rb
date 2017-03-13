@@ -1,16 +1,17 @@
 class BooksController < ApplicationController
+  load_and_authorize_resource only: [:update, :show, :create]
   before_action :set_book
   before_action :set_user
   before_action :set_categories
-
+  
   def index
     @category = session[:category] = params[:category] || session[:category] || 'All'
-    @sort_method = session[:sort] = params[:sort] || session[:sort] || 'Newest first'
-    @books =  @category == '"All' ? Book : Category.find_by(name: @category).books
+    @sort_method = session[:sort] = params[:sort] || session[:sort] || Book::SORT_METHODS.first
+    @books =  @category == 'All' ? Book : Category.find_by(name: @category).books
     @books = sort(@books).page(params[:page])
   rescue
     @category = 'All'
-    @sort_method  = 'Newest first'
+    @sort_method  = Book::SORT_METHODS.first
     @books = Book
     @books = sort(@books).page(params[:page])
   end
@@ -20,8 +21,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    byebug
-    @note = Note.new(user: @user, book: @book)
+    @note = Review.new(user: @user, book: @book)
     if @note.update(note_params)
       redirect_to books_path, notice: I18n.t('books.create.success')
     else
@@ -40,16 +40,7 @@ class BooksController < ApplicationController
     end
 
     def sort(books)
-      case @sort_method
-      when 'Popular first'
-        books.popular
-      when 'Price: Low to hight'
-        books.from_low_to_high_price
-      when 'Price: Top to down'
-        books.from_hight_to_low_price
-      else
-        books.newest
-      end
+      books.send(@sort_method)
     end
 
     def set_categories
@@ -65,7 +56,7 @@ class BooksController < ApplicationController
       params.require(:book).permit(:name, :author, :price, :description, :demensions, :materials, :public_year, :photo1, :photo2, :photo3, :photo4, :title_photo, :alt)
     end
 
-     def note_params
+    def note_params
       params.permit(:rating, :text).to_h
     end
 end

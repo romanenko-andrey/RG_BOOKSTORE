@@ -2,7 +2,7 @@
   .row
     .col-sm-5
       .general-img-wrap
-        = image_tag book.title_photo, alt: book.alt, class: ['img-shadow', 'general-thumbnail-img']
+        = image_tag title_photo(book), alt: book.alt, class: ['img-shadow', 'general-thumbnail-img']
     .col-sm-7
       .mb-60
         %h1= book.name

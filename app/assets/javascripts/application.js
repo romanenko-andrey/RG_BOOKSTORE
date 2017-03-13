@@ -12,8 +12,8 @@
 //
 
 
-//= require 67602d7308
+
 //= require jquery
 //= require bootstrap
-//= require_tree .
-//= require my_code
+//= require_tree ./application
+

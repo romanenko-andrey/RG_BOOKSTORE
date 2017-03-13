@@ -26,7 +26,7 @@
             %td
               %span.in-grey-600 Status
             %td
-              %span.font-16.in-grey-900.fw-300= humanize(order.state)
+              %span.font-16.in-grey-900.fw-300= humanize(order.orders_state.name)
           %tr
             %td
               %span.in-grey-600 Total
@@ -47,7 +47,6 @@
             %span.in-grey-600 Total
       %tbody
         - @orders.each do |order|
-          /= link_to order_path(:id => order.id) do
           %tr
             %td
               = link_to order_path(:id => order.id) do
@@ -55,7 +54,7 @@
             %td
               %span.in-grey-900.font-16.fw-300= format_date_to_YYYYMMDD(order.created_at)
             %td
-              %span.font-16.in-grey-900.fw-300= humanize(order.state)
+              %span.font-16.in-grey-900.fw-300= humanize(order.orders_state.name)
             %td
               %strong.font-16= toEURO(order.total_cost)
       

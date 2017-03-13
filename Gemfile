@@ -32,6 +32,10 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'font-awesome-sass'
+# gem 'pandoc-ruby'
+# gem 'slim'
+gem 'maruku'
 gem 'haml-rails'
 gem 'kaminari'
 gem 'devise'
@@ -42,13 +46,15 @@ gem 'omniauth-github'
 
 gem 'rectify'
 gem 'wicked'
-gem 'ffaker'
-gem 'rails_admin'
+gem 'rails_admin', '~> 1.1.1'
 gem 'rails_admin_aasm'
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
 gem 'cancancan'
 
 group :development, :test do
   gem 'byebug'
+  gem 'ffaker'
   gem 'factory_girl_rails'
   gem 'letter_opener_web'
   gem 'rspec-rails'

@@ -33,8 +33,6 @@
               = render 'forms/address_form', f: shipping_form, form_name: "shipping_address"  
               .text-center.general-text-align
                 = shipping_form.button 'Save shipping address', {name: 'form', value: 'shipping_address', class: 'btn disabled'}
-          .text-left.general-text-align
-            = user_form.button 'Save all the addresses', {name: 'form', value: 'all_addresses', class: 'btn'}
                     
     #privacy.tab-pane.fade{role: "tabpanel", class: ['in', 'general-main-wrap', "#{@privacy_tab}"]}
       .row.mb-60

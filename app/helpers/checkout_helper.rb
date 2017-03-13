@@ -13,4 +13,8 @@ module CheckoutHelper
       ''
     end
   end
+
+  def book_image_in(order)
+    order[:photo] || ''
+  end
 end

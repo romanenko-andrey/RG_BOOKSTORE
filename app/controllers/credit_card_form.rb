@@ -12,8 +12,8 @@ class CreditCardForm < Rectify::Form
   validate :mmyy_code
 
   def mmyy_code
-    mm = :mmyy[0,2].to_i
-    return if mm.in? (0 - 12)
-    errors.add(:phone, I18n.t('validation.error_in_mmyy_code')
+    mm = mmyy[0,2].to_i
+    return if mm.between?(0, 12)
+    errors.add(:phone, I18n.t('validation.error_in_mmyy_code'))
   end
 end

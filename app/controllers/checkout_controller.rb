@@ -1,6 +1,6 @@
 class CheckoutController < ApplicationController 
   rescue_from ActionController::RoutingError, :with => :error_render_method
-  rescue_from ActionView::Template::Error, :with => :error_view_template
+ # rescue_from ActionView::Template::Error, :with => :error_view_template
   rescue_from Wicked::Wizard::InvalidStepError, :with => :error_step_in_path_params
 
   include Wicked::Wizard
@@ -43,15 +43,20 @@ class CheckoutController < ApplicationController
   protected
 
   def create_new_order
-    last_order = Order.where(user: @user, total_cost: totally_cost).last
+    last_order = Order.where(user: @user, total_cost: @total).last
     if last_order 
       session['last_order'] = last_order.id
       return
     end
+
+
+    @orders.each{ |order| order.stringify_keys! }
+
     order_params = {
-      user: @user, number: generate_order_number, items: @orders, discont: @cart['coupon'], 
-      delivery_methods: @cart['delivery'].first, delivery_cost: @cart['delivery'].last, 
-      total_cost: totally_cost, state: 'in_progress' }
+      user: @user, number: generate_order_number, items: @orders, discont: @cart[:coupon], 
+      delivery_methods: @cart[:delivery].first, delivery_cost: @cart[:delivery].last, 
+      total_cost: @total, orders_state: OrdersState.find_by(name: "in_progress")
+    }
 
     @order.update(order_params)
     @order.save
@@ -61,12 +66,12 @@ class CheckoutController < ApplicationController
   end
 
   def generate_order_number
-    DateTime.now.to_i.to_s
+    "R#{DateTime.now.to_i}"
   end
 
   def update_credit_card?
     @credit_info = CreditCardForm.from_params(credit_card_params)
-    session['cart']['credit_card'] = @credit_info.attributes
+    @cart[:credit_card] = @credit_info.attributes
     unless @credit_info.valid?
       flash[:credit_card] = @credit_info.errors 
       flash[:error] = I18n.t('devise.registrations.credit_card_error')
@@ -120,9 +125,9 @@ class CheckoutController < ApplicationController
     @shipping = @user.shipping_address
   end
 
-  def totally_cost
-    books_cost = @orders.reduce(0){|total, order| total + order['sum'].to_f * order['price'].to_f} 
-    books_cost - @cart['coupon'].to_f + @cart['delivery'].last.to_f
+  def calculate_totally_cost(orders)
+    books_cost = orders.reduce(0){|total, order| total + order[:sum].to_f * order[:price].to_f} 
+    books_cost - @cart[:coupon].to_f + @cart[:delivery].last.to_f
   end
 
   def set_cart
@@ -132,13 +137,17 @@ class CheckoutController < ApplicationController
       @orders = @order.items
       @address = @user.shipping_address
     else
-      @cart = session['cart']
-      @orders = @cart['orders']
-      @credit_card = @cart['credit_card'] || {}
-      @order = Order.new(@credit_card)
+      @cart = session['cart'].symbolize_keys
+      @orders = @cart[:orders]
+      @orders.each {|order| order.symbolize_keys! }
+      @cart[:credit_card] ||= {}
+      @cart[:delivery] ||= []
+      @order = Order.new(@cart[:credit_card].symbolize_keys!)
     end
+
+    @total = calculate_totally_cost(@orders)
   rescue
-    redirect_to cart_path
+    redirect_to carts_path
   end
 
   def save_cart
@@ -159,7 +168,6 @@ class CheckoutController < ApplicationController
   end
 
   def error_render_method
-    #flash[:alert] = I18n.t('application.routes.error')
     redirect_to books_path, alert: I18n.t('application.routes.error')
   end
 

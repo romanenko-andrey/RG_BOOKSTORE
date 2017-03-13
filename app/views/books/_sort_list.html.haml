@@ -1,9 +1,4 @@
 %ul.dropdown-menu
-  %li
-    = link_to "Newest first", books_path(sort: "Newest first")
-  %li
-    = link_to "Popular first", books_path(sort: "Popular first")
-  %li
-    = link_to "Price: Low to hight", books_path(sort: "Price: Low to hight")
-  %li
-    = link_to "Price: Top to down", books_path(sort: "Price: Top to down")
+  - Book::SORT_METHODS.each do |method|
+    %li
+      = link_to I18n.t("books.sort_methods.#{method}"), books_path(sort: method)

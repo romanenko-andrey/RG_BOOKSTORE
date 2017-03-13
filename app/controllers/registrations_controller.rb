@@ -1,39 +1,40 @@
 class RegistrationsController < Devise::RegistrationsController
-  include Rectify::ControllerHelpers
+#  include Rectify::ControllerHelpers
 
   def update
     super do |user|
-      @billing_form = AddressForm.from_params(billing_address_params)
-      @shipping_form = AddressForm.from_params(shipping_address_params)  
-
       case params[:form]
       when 'billing_address'
-        user.billing_address.update @billing_form.attributes 
-        if !@billing_form.valid?
-          set_flash_message :error,  :address_error
-          redirect_to edit_user_registration_path, flash: { "#{params[:form]}": @billing_form.errors }
-          return
-        end
+        redirect_to edit_user_registration_path and return unless update_billing_address?
       when 'shipping_address'
-        user.shipping_address.update @shipping_form.attributes
-        if !@shipping_form.valid?
-          set_flash_message :error,  :address_error
-          redirect_to edit_user_registration_path, flash: { "#{params[:form]}": @shipping_form.errors }
-          return
-        end
-
-      when 'all_addresses'
-        user.billing_address.update @billing_form.attributes 
-        user.shipping_address.update @shipping_form.attributes 
-        unless @shipping_form.valid? || @billing_form.valid?
-          set_flash_message :error,  :address_error
-          redirect_to edit_user_registration_path, flash: { 'billing_address': @billing_form.errors,
-                                                            'shipping_address': @shipping_form.errors }
-          return
-        end
+        redirect_to edit_user_registration_path and return unless update_shipping_address?
       end
       set_flash_message :notice, :address_success
     end
+  end
+
+  private 
+
+  def update_billing_address?
+    @billing_form = AddressForm.from_params(billing_address_params)
+    @user.billing_address.update @billing_form.attributes 
+    unless @billing_form.valid?
+      flash[:billing_address] = @billing_form.errors 
+      flash[:error] = I18n.t('devise.registrations.address_error')
+      return false
+    end
+    true
+  end
+  
+  def update_shipping_address?
+    @shipping_form = AddressForm.from_params(shipping_address_params)
+    @user.shipping_address.update @shipping_form.attributes 
+    unless @shipping_form.valid?
+      flash[:shipping_address] = @shipping_form.errors 
+      flash[:error] = I18n.t('devise.registrations.address_error')
+      return false
+    end
+    true
   end
 
   protected

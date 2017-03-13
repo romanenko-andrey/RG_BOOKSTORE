@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170224100758) do
+ActiveRecord::Schema.define(version: 20170311165628) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "first_name"
@@ -59,11 +59,6 @@ ActiveRecord::Schema.define(version: 20170224100758) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.date     "public_year"
-    t.string   "photo1"
-    t.string   "photo2"
-    t.string   "photo3"
-    t.string   "photo4"
-    t.string   "title_photo"
     t.string   "alt"
     t.integer  "category_id"
     t.index ["category_id"], name: "index_books_on_category_id"
@@ -89,19 +84,6 @@ ActiveRecord::Schema.define(version: 20170224100758) do
     t.index ["book_id"], name: "index_newests_on_book_id"
   end
 
-  create_table "notes", force: :cascade do |t|
-    t.string   "title"
-    t.text     "text"
-    t.integer  "rating"
-    t.boolean  "checked",    default: false
-    t.integer  "book_id"
-    t.integer  "user_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.index ["book_id"], name: "index_notes_on_book_id"
-    t.index ["user_id"], name: "index_notes_on_user_id"
-  end
-
   create_table "orders", force: :cascade do |t|
     t.string   "number"
     t.text     "items",            default: "--- []\n"
@@ -109,15 +91,43 @@ ActiveRecord::Schema.define(version: 20170224100758) do
     t.string   "delivery_methods"
     t.string   "delivery_cost"
     t.string   "total_cost"
-    t.string   "state"
     t.string   "card_number"
     t.string   "card_name"
     t.string   "cvv"
     t.string   "mmyy"
+    t.integer  "orders_state_id"
     t.integer  "user_id"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.index ["orders_state_id"], name: "index_orders_on_orders_state_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "orders_states", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string   "file",       null: false
+    t.integer  "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_photos_on_book_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string   "title"
+    t.text     "text"
+    t.integer  "rating"
+    t.string   "status",     default: "unprocessed"
+    t.integer  "book_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.index ["book_id"], name: "index_reviews_on_book_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "shipping_addresses", force: :cascade do |t|

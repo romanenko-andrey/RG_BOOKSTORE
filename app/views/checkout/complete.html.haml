@@ -16,7 +16,7 @@
         %br
         = "#{@address.city} #{@address.zip}"
         %br
-        = countries_select_options[@address.country.to_i].first
+        = countries_select_options(@address.country.to_i).name
         %br
         = "Phone #{@billing.phone}"
     .col-sm-6.hidden-xs.text-right
