@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
     redirect_to books_path and return if @order.nil?
     @user = User.find_by_id(@order.user)
     @orders = @order.items
+    @orders.each {|order| order.symbolize_keys! }
     @shipping = @user.shipping_address
     @billing = @user.billing_address
   end
@@ -20,7 +21,6 @@ class OrdersController < ApplicationController
 
   def get_variables
     @states_names_list =  OrdersState.pluck(:name)
-    # ['in_progress', 'in_queue', 'in_delivery', 'delivered', 'canceled' ]
     @state_order = params[:sort_by] || @state_order || @states_names_list.first
   end
 end

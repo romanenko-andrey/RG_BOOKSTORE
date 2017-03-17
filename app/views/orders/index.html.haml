@@ -16,7 +16,8 @@
             %td.col-half
               %span.in-grey-600 Number
             %td.col-half
-              %span.general-order-number= order.number
+              = link_to order_path(:id => order.id) do
+                %span.general-order-number= order.number
           %tr
             %td
               %span.in-grey-600 Completed at
