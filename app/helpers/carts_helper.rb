@@ -1,3 +1,4 @@
+# :nodoc:
 module CartsHelper
   def input_value(order)
     order[:sum].to_s
@@ -8,7 +9,7 @@ module CartsHelper
   end
 
   def total_sum
-    @orders.reduce(0){|x, y| x + y[:sum].to_f*y[:price].to_f} 
+    @orders.reduce(0) { |x, y| x + y[:sum].to_f * y[:price].to_f }
   end
 
   def coupon

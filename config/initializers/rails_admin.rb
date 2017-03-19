@@ -1,5 +1,4 @@
 RailsAdmin.config do |config|
-
   ### Popular gems integration
 
   # == Devise ==
@@ -37,8 +36,8 @@ RailsAdmin.config do |config|
     show_in_app
   end
 
-  #config.label_methods = [:to_s].concat(config.label_methods)
-  #config.label_methods << :id
+  # config.label_methods = [:to_s].concat(config.label_methods)
+  # config.label_methods << :id
 
   config.model 'User' do
     object_label_method :user_show_method
@@ -58,7 +57,6 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Book' do
-   
     nested do
       field :photos
       field :notes
@@ -66,7 +64,6 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Order' do
-   
     list do
       sort_by :user
 
@@ -100,18 +97,18 @@ RailsAdmin.config do |config|
   end
 
   def photo_url_method
-    "#{self.file_identifier}"
+    file_identifier.to_s
   end
 
   def user_show_method
-    "#{self.email}"
+    email.to_s
   end
 
   def note_show_method
-    "#{self.status} from #{self.user.email}"
+    "#{status} from #{user.email}"
   end
 
   def full_name_method
-    "#{self.first_name} #{self.last_name}"
+    "#{first_name} #{last_name}"
   end
 end

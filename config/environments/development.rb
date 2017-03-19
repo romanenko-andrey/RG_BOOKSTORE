@@ -52,9 +52,9 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-   #devise options
-# config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-#General Settings
+  # devise options
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # General Settings
   config.app_domain = ENV['APP_DOMAIN'] # Email
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
@@ -69,6 +69,5 @@ Rails.application.configure do
     domain: ENV['APP_DOMAIN']
   }
 
-  #config.serve_static_assets = true
-
+  # config.serve_static_assets = true
 end

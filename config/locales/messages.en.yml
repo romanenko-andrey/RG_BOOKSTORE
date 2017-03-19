@@ -13,7 +13,7 @@ en:
     update:
       success:
         book_add: Book have successfully added.
-        change_count: Count of book have successfully changed.
+        change_sum: Count of book have successfully changed.
         delete: The book have successfully deleted.
   checkout:
     new:

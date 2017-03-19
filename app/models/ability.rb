@@ -1,3 +1,4 @@
+# :nodoc:
 class Ability
   include CanCan::Ability
 
@@ -5,7 +6,7 @@ class Ability
     user ||= User.new
 
     can :read, [Book, Category, Author, Bestseller, Newest, Review, Country]
-   
+
     if user
       if user.admin?
         can :access, :rails_admin
@@ -19,7 +20,5 @@ class Ability
         can [:read, :create, :update], Order, user_id: user.id
       end
     end
-
-
   end
 end

@@ -32,7 +32,7 @@
               = shipping_form.hidden_field :form, :value => 'shipping_address'
               = render 'forms/address_form', f: shipping_form, form_name: "shipping_address"  
               .text-center.general-text-align
-                = shipping_form.button 'Save shipping address', {name: 'form', value: 'shipping_address', class: 'btn disabled'}
+                = shipping_form.button 'Save shipping address', {name: 'form', value: 'shipping_address', class: 'btn'}
                     
     #privacy.tab-pane.fade{role: "tabpanel", class: ['in', 'general-main-wrap', "#{@privacy_tab}"]}
       .row.mb-60

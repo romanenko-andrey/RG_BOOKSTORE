@@ -1,3 +1,4 @@
+# :nodoc:
 class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :orders, dependent: :destroy
@@ -10,15 +11,15 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable,
-         :omniauthable, :omniauth_providers => [:facebook, :github, :google]
-  
+         :omniauthable, omniauth_providers: [:facebook, :github, :google]
+
   before_save { self.email = email.downcase }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 63 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  
+
   validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
 
   def self.from_omniauth(auth)
@@ -26,7 +27,7 @@ class User < ApplicationRecord
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
+      user.password = Devise.friendly_token[0, 20]
     end
   end
 end

@@ -1,3 +1,4 @@
+# :nodoc:
 module BooksHelper
   def first_page?
     Book.page(params[:page]).first_page?
@@ -13,7 +14,7 @@ module BooksHelper
   end
 
   def checked(note)
-    case note.status 
+    case note.status
     when 'approved' then 'Verified Reviewer'
     when 'rejected' then 'Blocked messages'
     else
@@ -26,6 +27,7 @@ module BooksHelper
   end
 
   def book_photo(book, pos)
-    pos >= book.photos.count ? book.photos.first.file.url : book.photos[pos].file.url
+    img = book.photos
+    pos >= img.count ? img.first.file.url : img[pos].file.url
   end
 end

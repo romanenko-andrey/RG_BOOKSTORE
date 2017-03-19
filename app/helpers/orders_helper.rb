@@ -1,5 +1,6 @@
+# :nodoc:
 module OrdersHelper
   def humanize(order)
-    order.gsub('_', ' ').titlecase
+    order.tr('_', ' ').titlecase
   end
 end

@@ -9,9 +9,6 @@ FactoryGirl.define do
     name { FFaker::Internet.email }
     email { FFaker::Internet.email }
     password { FFaker::Internet.password(8) }
-    admin  true
+    admin true
   end
-
-
 end
-

@@ -1,19 +1,19 @@
 require 'rails_helper'
 include Support::UserAuth
 
-feature "HomePage of Bookstore App", type: :feature do
+feature 'HomePage of Bookstore App', type: :feature do
   before :all do
-    load "#{Rails.root}/db/test-seeds.rb" 
+    # load Rails.root.join('db', 'test_seeds.rb')
   end
 
-  context "home page" do
+  context 'home page' do
     before { visit root_path }
-    
-    it "displays Welcome invitation" do
+
+    it 'displays Welcome invitation' do
       expect(page).to have_content 'Welcome to our amazing Bookstore!'
     end
 
-    scenario "displays LogIn & SignUp links when user is not logined now" do
+    scenario 'displays LogIn & SignUp links when user is not logined now' do
       expect(page).to have_current_path root_path
       expect(page).to have_content 'Log In'
       expect(page).to have_content 'Sign Up'
@@ -50,4 +50,3 @@ feature "HomePage of Bookstore App", type: :feature do
     before { visit root_path }
   end
 end
-

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
@@ -24,33 +24,33 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
+gem 'cancancan'
+gem 'carrierwave', '~> 1.0'
+gem 'devise'
 gem 'font-awesome-sass'
-gem 'maruku'
 gem 'haml-rails'
 gem 'kaminari'
-gem 'devise'
+gem 'maruku'
+gem 'mini_magick'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'omniauth-google'
 gem 'omniauth-github'
-gem 'rectify'
-gem 'wicked'
+gem 'omniauth-google'
 gem 'rails_admin', '~> 1.1.1'
 gem 'rails_admin_aasm'
-gem 'carrierwave', '~> 1.0'
-gem 'mini_magick'
-gem 'cancancan'
+gem 'rectify'
+gem 'wicked'
 
 group :development, :test do
   gem 'byebug'
-  gem 'ffaker'
-  gem 'factory_girl_rails'
-  gem 'rspec-rails'
-  gem 'rails-controller-testing'
   gem 'capybara'
   gem 'capybara-email'
   gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'ffaker'
   gem 'poltergeist'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
   gem 'shoulda'
   gem 'shoulda-matchers'
 end
