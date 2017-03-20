@@ -367,7 +367,7 @@ TvFXMeuCkZPcaEBLqvgPBhCuiZo8+sAAAAAASUVORK5CYII=
       <div class="infobox">
         <div class="total">
           41 files inspected,
-          52 offenses detected:
+          46 offenses detected:
         </div>
         <ul class="offenses-list">
           
@@ -439,7 +439,7 @@ TvFXMeuCkZPcaEBLqvgPBhCuiZo8+sAAAAAASUVORK5CYII=
             
             <li>
               <a href="#offense_app/controllers/credit_card_form.rb">
-                app/controllers/credit_card_form.rb - 8 offenses
+                app/controllers/credit_card_form.rb - 3 offenses
               </a>
             </li>
           
@@ -474,7 +474,7 @@ TvFXMeuCkZPcaEBLqvgPBhCuiZo8+sAAAAAASUVORK5CYII=
             
             <li>
               <a href="#offense_app/helpers/application_helper.rb">
-                app/helpers/application_helper.rb - 10 offenses
+                app/helpers/application_helper.rb - 9 offenses
               </a>
             </li>
           
@@ -799,7 +799,7 @@ TvFXMeuCkZPcaEBLqvgPBhCuiZo8+sAAAAAASUVORK5CYII=
       
       <div class="offense-box" id="offense_app/controllers/credit_card_form.rb">
         <div class="box-title-placeholder"><h3>&nbsp;</h3></div>
-        <div class="box-title"><h3>app/controllers/credit_card_form.rb - 8 offenses</h3></div>
+        <div class="box-title"><h3>app/controllers/credit_card_form.rb - 3 offenses</h3></div>
         <div class="offense-reports">
           
           <div class="report">
@@ -815,23 +815,12 @@ TvFXMeuCkZPcaEBLqvgPBhCuiZo8+sAAAAAASUVORK5CYII=
           
           <div class="report">
             <div class="meta">
-              <span class="location">Line #8</span> –
-              <span class="severity convention">convention:</span>
-              <span class="message">Trailing whitespace detected.</span>
-            </div>
-            
-            <pre><code>  validates :card_number, presence: true,<span class="highlight convention"> </span></code></pre>
-            
-          </div>
-          
-          <div class="report">
-            <div class="meta">
               <span class="location">Line #9</span> –
               <span class="severity convention">convention:</span>
-              <span class="message">Align the elements of a hash literal if they span more than one line.</span>
+              <span class="message">Line is too long. [88/80]</span>
             </div>
             
-            <pre><code>            <span class="highlight convention">format: /\A\d+\z/</span>, length: { is: 16 }</code></pre>
+            <pre><code>  validates :card_name, presence: true, format: /\A[a-z\s]+\z/i, length: { maxim<span class="highlight convention">um: 50 }</span></code></pre>
             
           </div>
           
@@ -839,54 +828,10 @@ TvFXMeuCkZPcaEBLqvgPBhCuiZo8+sAAAAAASUVORK5CYII=
             <div class="meta">
               <span class="location">Line #10</span> –
               <span class="severity convention">convention:</span>
-              <span class="message">Trailing whitespace detected.</span>
-            </div>
-            
-            <pre><code>  validates :card_name, presence: true,<span class="highlight convention"> </span></code></pre>
-            
-          </div>
-          
-          <div class="report">
-            <div class="meta">
-              <span class="location">Line #11</span> –
-              <span class="severity convention">convention:</span>
-              <span class="message">Align the elements of a hash literal if they span more than one line.</span>
-            </div>
-            
-            <pre><code>            <span class="highlight convention">format: /\A[a-z\s]+\z/i</span>, length: { maximum: 50 }</code></pre>
-            
-          </div>
-          
-          <div class="report">
-            <div class="meta">
-              <span class="location">Line #12</span> –
-              <span class="severity convention">convention:</span>
-              <span class="message">Trailing whitespace detected.</span>
-            </div>
-            
-            <pre><code>  validates :mmyy, presence: true, length: { is: 5 },<span class="highlight convention"> </span></code></pre>
-            
-          </div>
-          
-          <div class="report">
-            <div class="meta">
-              <span class="location">Line #13</span> –
-              <span class="severity convention">convention:</span>
-              <span class="message">Align the elements of a hash literal if they span more than one line.</span>
-            </div>
-            
-            <pre><code>            <span class="highlight convention">format: /\A\d{2}\/\d{2}\z/</span></code></pre>
-            
-          </div>
-          
-          <div class="report">
-            <div class="meta">
-              <span class="location">Line #13</span> –
-              <span class="severity convention">convention:</span>
               <span class="message">Use <code>%r</code> around regular expression.</span>
             </div>
             
-            <pre><code>            format: <span class="highlight convention">/\A\d{2}\/\d{2}\z/</span></code></pre>
+            <pre><code>  validates :mmyy, presence: true, length: { is: 5 }, format: <span class="highlight convention">/\A\d{2}\/\d{2}\z/</span></code></pre>
             
           </div>
           
@@ -981,7 +926,7 @@ TvFXMeuCkZPcaEBLqvgPBhCuiZo8+sAAAAAASUVORK5CYII=
       
       <div class="offense-box" id="offense_app/helpers/application_helper.rb">
         <div class="box-title-placeholder"><h3>&nbsp;</h3></div>
-        <div class="box-title"><h3>app/helpers/application_helper.rb - 10 offenses</h3></div>
+        <div class="box-title"><h3>app/helpers/application_helper.rb - 9 offenses</h3></div>
         <div class="offense-reports">
           
           <div class="report">
@@ -1052,18 +997,7 @@ TvFXMeuCkZPcaEBLqvgPBhCuiZo8+sAAAAAASUVORK5CYII=
           
           <div class="report">
             <div class="meta">
-              <span class="location">Line #40</span> –
-              <span class="severity convention">convention:</span>
-              <span class="message">Line is too long. [91/80]</span>
-            </div>
-            
-            <pre><code>    # id ? Country.find_by(id: id) : Country.all.map { |c| [&quot;#{c.name} (#{c.zip}<span class="highlight convention">)&quot;, c.id] }</span></code></pre>
-            
-          </div>
-          
-          <div class="report">
-            <div class="meta">
-              <span class="location">Line #53</span> –
+              <span class="location">Line #52</span> –
               <span class="severity convention">convention:</span>
               <span class="message">Tagging a string as html safe may be a security risk, prefer <code>safe_join</code> or other Rails tag helpers instead.</span>
             </div>
@@ -1074,7 +1008,7 @@ TvFXMeuCkZPcaEBLqvgPBhCuiZo8+sAAAAAASUVORK5CYII=
           
           <div class="report">
             <div class="meta">
-              <span class="location">Line #54</span> –
+              <span class="location">Line #53</span> –
               <span class="severity convention">convention:</span>
               <span class="message">Tagging a string as html safe may be a security risk, prefer <code>safe_join</code> or other Rails tag helpers instead.</span>
             </div>
@@ -1085,7 +1019,7 @@ TvFXMeuCkZPcaEBLqvgPBhCuiZo8+sAAAAAASUVORK5CYII=
           
           <div class="report">
             <div class="meta">
-              <span class="location">Line #59</span> –
+              <span class="location">Line #58</span> –
               <span class="severity convention">convention:</span>
               <span class="message">Tagging a string as html safe may be a security risk, prefer <code>safe_join</code> or other Rails tag helpers instead.</span>
             </div>

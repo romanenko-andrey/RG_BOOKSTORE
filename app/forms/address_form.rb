@@ -1,5 +1,8 @@
 # :nodoc:
 class AddressForm < Rectify::Form
+  include ActiveModel::Model
+  include Virtus.model
+  
   attribute :first_name, String
   attribute :last_name, String
   attribute :addressee, String

@@ -1,5 +1,8 @@
 # :nodoc:
 class CreditCardForm < Rectify::Form
+  include ActiveModel::Model
+  include Virtus.model
+  
   attribute :card_number, String
   attribute :card_name, String
   attribute :mmyy, String

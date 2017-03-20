@@ -1,7 +1,7 @@
 # :nodoc:
 class ApplicationController < ActionController::Base
   rescue_from ActionController::RoutingError, with: :error_render_method
-  rescue_from ActionView::Template::Error, with: :error_view_template
+  # rescue_from ActionView::Template::Error, with: :error_view_template
   rescue_from Wicked::Wizard::InvalidStepError, with: :error_step_in_path_params
   rescue_from CanCan::AccessDenied, with: :error_access_deninied
 
@@ -12,7 +12,12 @@ class ApplicationController < ActionController::Base
   private
 
   def set_categories
-    @categories = Category.pluck(:name)
+    #@categories = Category.pluck(:name)
+    @categories_info = []
+    @categories_info << { name: 'All', count: Book.count }
+    Category.all.each do |category|
+      @categories_info << { name: category.name, count: category.books.count }
+    end
   end
 
   def error_render_method
@@ -33,8 +38,8 @@ class ApplicationController < ActionController::Base
 
   def reload_rails_admin
     models = %w(User Review Photo Book Author Order)
-    models.each do |m|
-      RailsAdmin::Config.reset_model(m)
+    models.each do |model|
+      RailsAdmin::Config.reset_model(model)
     end
     RailsAdmin::Config::Actions.reset
     load(Rails.root.join('config', 'initializers', 'rails_admin.rb'))
