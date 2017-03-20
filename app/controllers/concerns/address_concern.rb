@@ -11,42 +11,32 @@ module AddressConcern
     update_shipping_address
     if flash[:billing_address] || flash[:shipping_address]
       flash[:error] = I18n.t('devise.registrations.address_error')
-      @update_error = true
       return false
     end
     true
   end
 
   def update_billing_address
-    @bill_form = AddressForm.from_params(billing_address_params)
+    @bill_form = AddressForm.from_params(address_params 'billing')
     @user.billing_address.update @bill_form.attributes
-    flash[:billing_address] = @bill_form.errors unless @bill_form.valid?
+    flash[:billing_address] = @bill_form.errors unless  @bill_form.valid?
   end
 
   def update_shipping_address
-    @ship_form = AddressForm.from_params(shipping_address_params)
-    if @ship_form.identical
-      @bill_form.identical = true
+    form = AddressForm.from_params(address_params 'shipping')
+    if form.identical
+      form.identical = true
       @user.shipping_address.update @bill_form.attributes
     else
-      @user.shipping_address.update @ship_form.attributes
-      flash[:shipping_address] = @ship_form.errors unless @ship_form.valid?
+      @user.shipping_address.update form.attributes
+      flash[:shipping_address] = form.errors unless form.valid?
     end
   end
 
-  def billing_address_params
+  def address_params(address)
     params.require(:user)
-          .require(:billing_address_attributes)
+          .require("#{address}_address_attributes".to_sym)
           .permit([:first_name, :last_name, :addressee,
-                   :city, :country, :zip, :phone, :identical])
-          .to_h
-  end
-
-  def shipping_address_params
-    params.require(:user)
-          .require(:shipping_address_attributes)
-          .permit([:first_name, :last_name, :addressee,
-                   :city, :country, :zip, :phone, :identical])
-          .to_h
+                   :city, :country, :zip, :phone, :identical]).to_h
   end
 end

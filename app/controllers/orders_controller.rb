@@ -12,9 +12,7 @@ class OrdersController < ApplicationController
     @order = Order.find_by(id: params[:id])
     redirect_to(books_path) && return if @order.nil?
     @user = User.find_by(id: @order.user)
-    @orders = @order.items
-    @shipping = @user.shipping_address
-    @billing = @user.billing_address
+    @orders = @order.items.map(&:symbolize_keys!)
   end
 
   private

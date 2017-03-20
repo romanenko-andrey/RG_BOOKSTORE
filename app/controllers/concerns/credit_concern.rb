@@ -12,7 +12,6 @@ module CreditConcern
     unless @credit_info.valid?
       flash[:credit_card] = @credit_info.errors
       flash[:error] = I18n.t('devise.registrations.credit_card_error')
-      @update_error = true
       return false
     end
     true

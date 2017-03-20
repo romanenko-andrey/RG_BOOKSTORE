@@ -30,4 +30,12 @@ module BooksHelper
     img = book.photos
     pos >= img.count ? img.first.file.url : img[pos].file.url
   end
+
+  def category
+    session[:category]
+  end
+
+  def sort_method
+    session[:sort]
+  end
 end

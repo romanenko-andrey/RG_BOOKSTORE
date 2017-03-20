@@ -23,7 +23,7 @@
           %li
             %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"} Shop
             %ul#menu.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
-              - @categories_info.each do |category|
+              - categories_info.each do |category|
                 %li= link_to "#{category[:name]}", books_path(category: category[:name]), class: "collapse-link"
           = render 'login_menu'    
          
@@ -34,7 +34,7 @@
           %li.dropdown
             %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"} Shop
             %ul.dropdown-menu
-              - @categories_info.each do |category|
+              - categories_info.each do |category|
                 %li= link_to "#{category[:name]}", books_path(category: category[:name]), class: "collapse-link"
           = render 'login_menu' 
   

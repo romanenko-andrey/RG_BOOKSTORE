@@ -2,8 +2,8 @@
 class RegistrationsController < Devise::RegistrationsController
   def update
     super do |_user|
-      update_billing_address
-      update_shipping_address
+      update_address('shipping')
+      update_address('billing')
       redirect_to(edit_user_registration_path) && return if flash[:error]
       set_flash_message :notice, :address_success
     end
@@ -11,21 +11,17 @@ class RegistrationsController < Devise::RegistrationsController
 
   private
 
-  def update_billing_address
-    return unless params[:form] == 'billing_address'
-    @billing_form = AddressForm.from_params(billing_address_params)
-    @user.billing_address.update @billing_form.attributes
-    return if @billing_form.valid?
-    flash[:billing_address] = @billing_form.errors
-    flash[:error] = I18n.t('devise.registrations.address_error')
-  end
-
-  def update_shipping_address
-    return unless params[:form] == 'shipping_address'
-    @shipping_form = AddressForm.from_params(shipping_address_params)
-    @user.shipping_address.update @shipping_form.attributes
-    return if @shipping_form.valid?
-    flash[:shipping_address] = @shipping_form.errors
+  def update_address(address)
+    return unless params[:form] == "#{address}_address"
+    form = AddressForm.from_params(address_params address)
+    
+    case address
+    when 'shipping' then @user.shipping_address.update form.attributes
+    when 'billing'  then @user.billing_address.update form.attributes
+    end
+    
+    return if form.valid?
+    flash["#{address}_address".to_sym] = form.errors
     flash[:error] = I18n.t('devise.registrations.address_error')
   end
 
@@ -39,17 +35,10 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def billing_address_params
-    params.require(:user)
-          .require(:billing_address_attributes)
-          .permit([:first_name, :last_name, :addressee,
-                   :city, :country, :zip, :phone]).to_h
+  def address_params(address)
+    params.require(:user).require("#{address}_address_attributes".to_sym)
+                         .permit([:first_name, :last_name, :addressee,
+                                  :city, :country, :zip, :phone]).to_h
   end
 
-  def shipping_address_params
-    params.require(:user)
-          .require(:shipping_address_attributes)
-          .permit([:first_name, :last_name, :addressee,
-                   :city, :country, :zip, :phone]).to_h
-  end
 end

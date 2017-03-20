@@ -3,7 +3,7 @@ include Support::UserAuth
 
 feature 'HomePage of Bookstore App', type: :feature do
   before :all do
-    # load Rails.root.join('db', 'test_seeds.rb')
+    load Rails.root.join('db', 'test_seeds.rb')
   end
 
   context 'home page' do

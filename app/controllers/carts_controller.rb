@@ -5,7 +5,8 @@ class CartsController < ApplicationController
   before_action :find_cart_position, only: [:update, :destroy]
   after_action  :save_cart, only: [:update, :create]
 
-  def index; end
+  def index
+  end
 
   def show
     redirect_to carts_path

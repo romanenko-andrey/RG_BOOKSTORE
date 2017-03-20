@@ -1,16 +1,16 @@
 %h2= @page
 %main.container
-  %h1.general-title-margin Catalog (#{@category})
+  %h1.general-title-margin Catalog (#{category})
   .hidden-xs.clearfix
     .dropdowns.pull-right
       .dropdown.width-240
         %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
-          = I18n.t("books.sort_methods.#{@sort_method}")
+          = I18n.t("books.sort_methods.#{sort_method}")
           %i.fa.fa-angle-down.dropdown-icon.pull-right
         = render :partial => 'sort_list'
        
     %ul.list-inline.pt-10.mb-25.mr-240
-      - @categories_info.each do |category|
+      - categories_info.each do |category|
         %li.mr-35
           = link_to books_path(category: category[:name]), class: "filter-link" do
             =category[:name]
@@ -20,17 +20,17 @@
     %p.lead.small.mb-10 Filter by category
     .dropdown
       %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
-        = @category
+        = category
         %i.fa.fa-angle-down.dropdown-icon.pull-right
       %ul.dropdown-menu
-        - @categories_info.each do |category|
+        - categories_info.each do |category|
           %li
             = link_to "#{category[:name]}", books_path(category: category[:name])
        
     %p.lead.small.mb-10 Sort by
     .dropdown
       %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
-        = I18n.t("books.sort_methods.#{@sort_method}")
+        = I18n.t("books.sort_methods.#{sort_method}")
         %i.fa.fa-angle-down.dropdown-icon.pull-right
       = render :partial => 'sort_list'
 

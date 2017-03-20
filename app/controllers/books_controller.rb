@@ -7,7 +7,7 @@ class BooksController < ApplicationController
   before_action :update_sort_method
 
   def index
-    @books = books_by_category.send(@sort_method).page(params[:page])
+    @books = sorted_books.page(params[:page])
   end
 
   def show
@@ -15,11 +15,11 @@ class BooksController < ApplicationController
   end
 
   def create
-    @note = Review.new(user: current_user, book: @book)
-    if @note.update(note_params)
+    note = Review.new(user: current_user, book: @book)
+    if note.update(note_params)
       redirect_to books_path, notice: I18n.t('books.create.success')
     else
-      flash[:error] = @note.errors.messages.join(' ,')
+      flash[:error] = note.errors.messages.join(' ,')
       redirect_to book_path(@book), alert: I18n.t('books.create.error')
     end
   end
@@ -31,17 +31,20 @@ class BooksController < ApplicationController
   end
 
   def books_by_category
-    @category == 'All' ? Book : Category.find_by(name: @category).books
+    return Book if session[:category] == 'All'
+    Category.find_by(name: session[:category]).books
+  end
+
+  def sorted_books
+    books_by_category.send(session[:sort])
   end
 
   def update_category
     session[:category] = params[:category] || session[:category] || 'All'
-    @category = session[:category]
   end
 
   def update_sort_method
     session[:sort] = params[:sort] || session[:sort] || Book::SORT_METHODS.first
-    @sort_method = session[:sort]
   end
 
   def book_params

@@ -19,12 +19,12 @@ Country.create! [
   { name: 'Ukraine', zip: '38' }
 ]
 
-User.create! [
-  { name: 'Roll', email: '123@123.com', password: '12345678', admin: true },
-  { name: 'Iren', email: 'i@mail.ru', password: '12345678' }
-]
-User.first.billing_address.update(country: Country.first.id)
-User.first.shipping_address.update(country: Country.first.id)
+User.create! [{ name: 'Admin', admin: true, email: 'admin@test.com',
+                password: '12345678', password_confirmation: '12345678' }]
+
+User.first.billing_address.update(FactoryGirl.attributes_for(:billing_address))
+
+User.first.shipping_address.update(FactoryGirl.attributes_for(:shipping_address))
 
 Category.create! [
   { name: 'Mobile development' },
@@ -48,7 +48,7 @@ Author.create! [
   { first_name: 'Dallas', last_name: 'Snider' },
   { first_name: 'Jason', last_name: 'Beaird' },
   { first_name: 'Paul', last_name: 'Boag' },
-  { first_name: 'Jennifer Niederst', last_name: 'Robbins' },
+  { first_name: 'Jennifer', last_name: 'Robbins' },
   { first_name: 'Jon', last_name: 'Duckett' },
   { first_name: 'Ethan', last_name: 'Marcotte' },
   { first_name: 'John', last_name: 'Horton' }
@@ -118,12 +118,7 @@ Written by Daniel Mall, Sara Soueidan, Zoe M. Gillenwater, Bram Stein, Yoav Weis
     materials: 'Hardcove, glossy paper',
     public_year: Date.new(2016),
     alt: 'design-book',
-    photos: [photo00, photo01, photo02, photo03, photo04]}
-    # title_photo: "Green-Smashing-Book-5-real-life-responsive-web-design-right-3-large.png",
-    # photo1: "smashing-book-5-marc-2-large.jpg",
-    # photo2: "smashing-book-5-marc-5-large.jpg",
-    # photo3: "smashing-book-5-photo.ab93ea0cf6.jpg",
-    # photo4: "smashing-book-5-photo-stack.9d5d114e3e.jpg",,
+    photos: [photo00, photo01, photo02, photo03, photo04]},
   { name: 'Node.js Projects',
     authors: [Author.find_by(first_name: 'Fernando', last_name: 'Monteiro')],
     price: 32.80,
@@ -134,13 +129,8 @@ Written by Daniel Mall, Sara Soueidan, Zoe M. Gillenwater, Bram Stein, Yoav Weis
     materials: 'Hardcove, glossy paper',
     public_year: Date.new(2016),
     alt: 'nodejs-book',
-    photos: [photo10, photo11]}
-    # title_photo: "V06202_MockupCover.jpg",
-    # photo1: "V06202_MockupCover.jpg",
-    # photo2: "NodeJS.jpg",
-    # photo3: "NodeJS.jpg",
-    # photo4: "NodeJS.jpg",
-,
+    photos: [photo10, photo11]
+  },
   { name: 'SQL Server 2016 Database Reporting',
     authors: [Author.find_by(first_name: 'Dallas', last_name: 'Snider')],
     price: 22.80,
@@ -151,12 +141,9 @@ Written by Daniel Mall, Sara Soueidan, Zoe M. Gillenwater, Bram Stein, Yoav Weis
     materials: 'Hardcove, glossy paper',
     public_year: Date.new(2017),
     alt: 'sql-server-book',
-    photos: [photo20, photo21]}
-    # title_photo: "V05929_MockupCover.jpg",
-    # photo1: "V05929_MockupCover.jpg",
-    # photo2: "MockupCover.jpg",
-    # photo3: "MockupCover.jpg",
-    # photo4: "MockupCover.jpg",
+    photos: [photo20, photo21]
+  },
+
   { name: 'The Principles of Beautiful Web Design',
     authors: [Author.find_by(first_name: 'Jason', last_name: 'Beaird')],
     price: 39.95,
@@ -167,12 +154,9 @@ Written by Daniel Mall, Sara Soueidan, Zoe M. Gillenwater, Bram Stein, Yoav Weis
     materials: 'Hardcove, glossy paper',
     public_year: Date.new(2016),
     alt: 'web-design-book',
-    photos: [photo30, photo31, photo32, photo33]}
-    # title_photo: "principles-of-beautiful-web-design.jpg",
-    # photo1: "principles-of-beautiful-web-design.jpg",
-    # photo2: "beautiful web - img1.jpg",
-    # photo3: "beautiful web - img2.jpg",
-    # photo4: "beautiful web - img3.jpg",
+    photos: [photo30, photo31, photo32, photo33]
+    },
+
   { name: 'DIGITAL ADAPTATION',
     authors: [Author.find_by(first_name: 'Paul', last_name: 'Boag')],
     price: 29.95,
@@ -183,14 +167,11 @@ Written by Daniel Mall, Sara Soueidan, Zoe M. Gillenwater, Bram Stein, Yoav Weis
     materials: 'Hardcove, glossy paper',
     public_year: Date.new(2014),
     alt: 'digital-adaptation-book',
-    photos: [photo40, photo41, photo42, photo43],}
-    # title_photo: "mailing-image-Digital-Adaptation-standing-hardcover-v5-opt1.png",
-    # photo1: "mailing-image-Digital-Adaptation-standing-hardcover-v5-opt1.png",
-    # photo2: "digital-adaptation-bookcover-01.jpg",
-    # photo3: "digital-adaptation-bookcover-02.jpg",
-    # photo4: "digital-adaptation-bookcover-03.jpg",
+    photos: [photo40, photo41, photo42, photo43]
+    },
+
   { name: 'Learning Web Design',
-    authors: [Author.find_by(first_name: 'Jennifer Niederst', last_name: 'Robbins')],
+    authors: [Author.find_by(first_name: 'Jennifer', last_name: 'Robbins')],
     price: 29.85,
     category: Category.find_by(name: 'Web design'),
     short_description: 'A Beginners Guide to (X)HTML, Style Sheets and Web Graphics',
@@ -199,12 +180,8 @@ Written by Daniel Mall, Sara Soueidan, Zoe M. Gillenwater, Bram Stein, Yoav Weis
     materials: 'Hardcove, glossy paper',
     public_year: Date.new(2016),
     alt: 'html-css-web-book',
-    photos: [photo50, photo51, photo52],}
-    # title_photo: "learning-web-design-a-beginners-guide.png",
-    # photo1: "learning-web-design-a-beginners-guide.png",
-    # photo2: "book-learningweb-theme1.jpg",
-    # photo3: "book-learningweb-theme2.jpg",
-    # photo4: "book-learningweb-theme1.jpg",
+    photos: [photo50, photo51, photo52]},
+
   { name: 'JAVASCRIPT & JQUERY. Interactive front-end web development.',
     authors: [Author.find_by(first_name: 'Jon', last_name: 'Duckett')],
     price: 42.25,
@@ -215,12 +192,8 @@ Written by Daniel Mall, Sara Soueidan, Zoe M. Gillenwater, Bram Stein, Yoav Weis
     materials: 'Hardcove, glossy paper',
     public_year: Date.new(2016),
     photos: [photo60, photo61, photo62, photo63],
-    alt: 'js-jquery-book',}
-    # title_photo: "javascript-and-jquery-book-cover.png",
-    # photo1: "javascript-and-jquery-book-cover.png",
-    # photo2: "js_jq2.jpg",
-    # photo3: "js_jq1.jpg",
-    # photo4: "js_jq4.jpg",
+    alt: 'js-jquery-book'},
+
   { name: 'Responsive Web Design 2nd edition',
     authors: [Author.find_by(first_name: 'Ethan', last_name: 'Marcotte')],
     price: 22.20,
@@ -231,12 +204,7 @@ Written by Daniel Mall, Sara Soueidan, Zoe M. Gillenwater, Bram Stein, Yoav Weis
     materials: 'Hardcove, glossy paper',
     public_year: Date.new(2014),
     photos: [photo70, photo71, photo72, photo73],
-    alt: 'web-design-book',}
-    # title_photo: "responsive web design.jpg",
-    # photo1: "responsive web design.jpg",
-    # photo2: "responsive web design2.jpg",
-    # photo3: "responsive web design3.jpg",
-    # photo4: "responsive web design1.jpg",
+    alt: 'web-design-book'},
   { name: 'Android: Programming for Developers',
     authors: [Author.find_by(first_name: 'John', last_name: 'Horton')],
     price: 45.50,
@@ -247,13 +215,8 @@ Written by Daniel Mall, Sara Soueidan, Zoe M. Gillenwater, Bram Stein, Yoav Weis
     materials: 'Hardcove, glossy paper',
     public_year: Date.new(2016),
     photos: [photo80],
-    alt: 'android-developer-book',}
+    alt: 'android-developer-book'},
 
-    # title_photo: "C06035.jpg",
-    # photo1: "C06035.jpg",
-    # photo2: "C06035.jpg",
-    # photo3: "C06035.jpg",
-    # photo4: "C06035.jpg",
   { name: 'Android: Programming for Beginners',
     authors: [Author.find_by(first_name: 'John', last_name: 'Horton')],
     price: 35.20,
@@ -265,11 +228,6 @@ Written by Daniel Mall, Sara Soueidan, Zoe M. Gillenwater, Bram Stein, Yoav Weis
     public_year: Date.new(2015),
     photos: [photo90],
     alt: 'android-beginner-book',}
-    # title_photo: "9781785883262.png",
-    # photo1: "9781785883262.png",
-    # photo2: "9781785883262.png",
-    # photo3: "9781785883262.png",
-    # photo4: "9781785883262.png"
 ]
 
 User.first.reviews.create!(text: 'Thank you BookStore, I was very pleased to receive my order for the Moleskine diary so soon after placing the order.',
@@ -293,4 +251,5 @@ Order.create!(user: User.first, discont: '0.00', orders_state: OrdersState.find_
               items: [{ book_id: '1', price: '10', sum: '2' }, { book_id: '2', price: '20', sum: '1' }])
 
 Book.take(3).each { |book| Newest.create! book: book }
+
 Book.offset(3).take(4).each { |book| Bestseller.create! book: book }

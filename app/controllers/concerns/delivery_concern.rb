@@ -12,7 +12,6 @@ module DeliveryConcern
     return unless @step == :delivery
     if @shipping_index.nil?
       flash[:alert] = I18n.t('checkout.shipping_method.error')
-      @update_error = true
       return false
     end
     @cart['delivery'] = @shipping_list[@shipping_index.to_i]

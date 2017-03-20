@@ -4,7 +4,6 @@ module OrderConcern
   include Wicked::Wizard
   included do
     before_action :set_order
-    before_action { @update_error = false }
   end
 
   private

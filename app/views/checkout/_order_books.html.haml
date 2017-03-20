@@ -10,7 +10,7 @@
           %td
             %span.in-grey-600 Price
           %td
-            %span.font-16.in-gold-500= toEURO(order[:price])
+            %span.font-16.in-gold-500= to_euro(order[:price])
         %tr
           %td.vertical-middle
             %span.in-grey-600 Quantity
@@ -20,7 +20,7 @@
           %td
             %span.in-grey-600 SubTotal
           %td
-            %span.font-16.in-gold-500=  toEURO(sub_total order)
+            %span.font-16.in-gold-500=  to_euro(sub_total order)
 
 .hidden-xs.divider-lg.pt-20
   %table.table.table-hover
@@ -45,8 +45,8 @@
             %p.title= order[:name]
             %p.in-grey-600.fw-300= order[:short_description]
           %td
-            %span.font-16.in-gold-500= toEURO(order[:price])
+            %span.font-16.in-gold-500= to_euro(order[:price])
           %td
             %span.ml-30= order[:sum]
           %td
-            %span.font-16.in-gold-500=  toEURO(sub_total order)
+            %span.font-16.in-gold-500=  to_euro(sub_total order)

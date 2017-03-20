@@ -32,7 +32,7 @@
             %td
               %span.in-grey-600 Total
             %td
-              %strong.font-16= toEURO(order.total_cost)
+              %strong.font-16= to_euro(order.total_cost)
   
   .hidden-xs.mb-res-50
     %table.table.table-hover
@@ -57,6 +57,6 @@
             %td
               %span.font-16.in-grey-900.fw-300= humanize(order.orders_state.name)
             %td
-              %strong.font-16= toEURO(order.total_cost)
+              %strong.font-16= to_euro(order.total_cost)
       
 

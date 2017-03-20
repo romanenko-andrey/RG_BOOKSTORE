@@ -6,19 +6,9 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied, with: :error_access_deninied
 
   protect_from_forgery with: :exception
-  before_action :set_categories
   before_action :reload_rails_admin, if: :rails_admin_path?
 
   private
-
-  def set_categories
-    #@categories = Category.pluck(:name)
-    @categories_info = []
-    @categories_info << { name: 'All', count: Book.count }
-    Category.all.each do |category|
-      @categories_info << { name: category.name, count: category.books.count }
-    end
-  end
 
   def error_render_method
     redirect_to books_path, alert: I18n.t('application.routes.error')

@@ -2,20 +2,20 @@
   %td
     %p.font-16 Subtotal:
   %td
-    %p.font-16= toEURO(total_sum)
+    %p.font-16= to_euro(total_sum)
 %tr
   %td
     %p.font-16 Coupon:
   %td
-    %p.font-16= toEURO(coupon)
+    %p.font-16= to_euro(coupon)
 - if delivery? 
   %tr
     %td
       %p.font-16 Delivery:
     %td
-      %p.font-16= toEURO(delivery_cost)
+      %p.font-16= to_euro(delivery_cost)
 %tr
   %td
     %strong.font-18 Order Total:
   %td
-    %strong.font-18= toEURO(order_total)
+    %strong.font-18= to_euro(order_total)

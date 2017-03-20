@@ -17,4 +17,12 @@ module CheckoutHelper
   def book_image_in(order)
     order[:photo] || ''
   end
+
+  def shipping
+    @user.shipping_address
+  end
+
+  def billing
+    @user.billing_address
+  end
 end

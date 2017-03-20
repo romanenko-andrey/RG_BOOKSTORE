@@ -32,21 +32,21 @@
         %td
           %p.font-16 Subtotal:
         %td
-          %p.font-16= toEURO(total_sum)
+          %p.font-16= to_euro(total_sum)
       %tr
         %td
           %p.font-16 Discont:
         %td
-          %p.font-16= toEURO(@order['discont'])
+          %p.font-16= to_euro(@order['discont'])
       %tr
         %td
           %p.font-16 Delivery:
         %td
-          %p.font-16= toEURO(@order['delivery_cost'])
+          %p.font-16= to_euro(@order['delivery_cost'])
       %tr
         %td
           %strong.font-18 Order Total:
         %td
-          %strong.font-18= toEURO(@order['total_cost'])
+          %strong.font-18= to_euro(@order['total_cost'])
   .text-center
     = link_to "Back to Store", books_path, class: 'btn btn-default mb-20'

@@ -30,14 +30,14 @@ class CheckoutController < ApplicationController
                             update_shipping_method? ||
                             update_credit_card?
     redirect_to books_path if create_new_order?
-    redirect_to checkout_path(@step) if @update_error
+    redirect_to checkout_path(@step) if flash[:error]
   end
 
   protected
 
   def set_user
     @user = current_user
-    @billing = @user.billing_address
-    @shipping = @user.shipping_address
+   # @billing = @user.billing_address
+   # @shipping = @user.shipping_address
   end
 end

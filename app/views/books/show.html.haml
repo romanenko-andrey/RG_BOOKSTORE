@@ -20,13 +20,13 @@
       .row
         =form_tag(cart_path(@book.id), method: 'patch') do
           .col-xs-12.col-md-4
-            %p.h1.in-gold-500.mt-10= toEURO(@book.price)
+            %p.h1.in-gold-500.mt-10= to_euro(@book.price)
           .col-xs-5.col-md-3
             .input-group.general-position
-              %a.input-link{href: "#", name: 'button_minus'}
+              %a.input-link{name: 'button_minus'}
                 %i.fa.fa-minus.line-height-40
               = text_field_tag :sum, '1', class: 'form-control quantity-input input_book_count'
-              %a.input-link{href: "#", name: 'button_plus'}
+              %a.input-link{name: 'button_plus'}
                 %i.fa.fa-plus.line-height-40
           .col-xs-7.col-md-5
             = submit_tag 'Add to Cart', class: 'btn btn-default pull-right general-position'

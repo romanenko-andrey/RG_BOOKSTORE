@@ -2,7 +2,16 @@
 module ApplicationHelper
   MAX_SIZE_OF_SHORT_DESCRIPTION = 350
 
-  def toEURO(value)
+  def categories_info
+    categories = []
+    categories << { name: 'All', count: Book.count }
+    Category.all.each do |category|
+      categories << { name: category.name, count: category.books.count }
+    end
+    categories 
+  end
+
+  def to_euro(value)
     "€#{format('%.2f', value.to_f)}"
   end
 
