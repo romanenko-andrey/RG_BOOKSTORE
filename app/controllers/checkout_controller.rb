@@ -37,7 +37,5 @@ class CheckoutController < ApplicationController
 
   def set_user
     @user = current_user
-   # @billing = @user.billing_address
-   # @shipping = @user.shipping_address
   end
 end
