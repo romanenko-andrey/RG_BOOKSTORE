@@ -10,7 +10,6 @@ Author.destroy_all
 Category.destroy_all
 Country.destroy_all
 Order.destroy_all
-OrdersState.destroy_all
 
 Country.create! [
   { name: 'USA', zip: '00' },
@@ -26,19 +25,13 @@ User.first.billing_address.update(FactoryGirl.attributes_for(:billing_address))
 
 User.first.shipping_address.update(FactoryGirl.attributes_for(:shipping_address))
 
+FactoryGirl.create :coupon
+
 Category.create! [
   { name: 'Mobile development' },
   { name: 'Photo' },
   { name: 'Web design' },
   { name: 'Database' }
-]
-
-OrdersState.create! [
-  { name: 'in_progress' },
-  { name: 'in_queue' },
-  { name: 'in_delivery' },
-  { name: 'delivered' },
-  { name: 'canceled' }
 ]
 
 Author.create! [
@@ -235,20 +228,7 @@ User.first.reviews.create!(text: 'Thank you BookStore, I was very pleased to rec
 User.last.reviews.create!(text: "If \u2018Get a better job\u2019 had landed on my desk a year ago, I might have been dismissive of it. Instead I was prepared to be open-minded. There have been many occasions where I turned to career books with practical activities to look for some inspiration when developing education activities for learners or assessment.",
                           book: Book.all.first, rating: 3)
 
-Order.create!(user: User.first, discont: '15.00', orders_state: OrdersState.find_by(name: 'in_progress'),
-               delivery_methods: 'Delivery Next Day!', delivery_cost: '5', cvv: '222', mmyy: '12/23',
-               number: 'R25314582', total_cost: '40.00', card_number: '1111222233334444', card_name: 'John Wood',
-               items: [{ 'book_id': '1', 'price': '10', 'sum': '2' }, { 'book_id': '2', 'price': '20', 'sum': '1' }])
-
-Order.create!(user: User.first, discont: '5.00', orders_state: OrdersState.find_by(name: 'in_delivery'),
-              delivery_methods: 'Delivery Next Day!', delivery_cost: '5', cvv: '222', mmyy: '12/23',
-              number: 'R25314583', total_cost: '50.00', card_number: '1111222233334444', card_name: 'John Wood',
-              items: [{ book_id: '1', price: '10', sum: '2' }, { book_id: '2', price: '20', sum: '1' }])
-
-Order.create!(user: User.first, discont: '0.00', orders_state: OrdersState.find_by(name: 'canceled'),
-              delivery_methods: 'Delivery Next Day!', delivery_cost: '5', cvv: '222', mmyy: '12/23',
-              number: 'R25314584', total_cost: '55.00', card_number: '1111222233334444', card_name: 'John Wood',
-              items: [{ book_id: '1', price: '10', sum: '2' }, { book_id: '2', price: '20', sum: '1' }])
+5.times { FactoryGirl.create :order, user: User.first }
 
 Book.take(3).each { |book| Newest.create! book: book }
 

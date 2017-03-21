@@ -1,28 +1,12 @@
 RailsAdmin.config do |config|
-  ### Popular gems integration
-
-  # == Devise ==
   config.authenticate_with do
     warden.authenticate! scope: :user
   end
   config.current_user_method(&:current_user)
 
-  # == Cancan ==
   config.authorize_with :cancan
 
   config.parent_controller = 'ApplicationController'
-
-  ## == Pundit ==
-  # config.authorize_with :pundit
-
-  ## == PaperTrail ==
-  # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
-
-  ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
-
-  ## == Gravatar integration ==
-  ## To disable Gravatar integration in Navigation Bar set to false
-  # config.show_gravatar true
 
   config.actions do
     dashboard                     # mandatory
@@ -34,10 +18,8 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
+    state
   end
-
-  # config.label_methods = [:to_s].concat(config.label_methods)
-  # config.label_methods << :id
 
   config.model 'User' do
     object_label_method :user_show_method
@@ -66,16 +48,23 @@ RailsAdmin.config do |config|
   config.model 'Order' do
     list do
       sort_by :user
-
-      fields :number, :created_at, :user, :orders_state
+      fields :number, :created_at, :user
+      field :status, :state
     end
 
-    # state({ states: {
-    #   processing: 'btn-info',
-    #   in_progress: 'btn-primary',
-    #   in_transit: 'btn-warning',
-    #   delivered: 'btn-success',
-    #   canceled: 'btn-danger' } })
+    edit do
+      field :status, :state
+      fields :number, :user, :discont, :total_cost, :delivery_methods, :delivery_cost
+    end
+
+    state({ states: {
+      in_progress: 'btn-info',
+      in_queue:    'btn-warning',
+      in_delivery: 'btn-warning',
+      delivered:   'btn-success',
+      canceled:    'btn-danger' } 
+    })
+
   end
 
   config.model 'Photo' do
@@ -88,6 +77,24 @@ RailsAdmin.config do |config|
     object_label_method do
       :note_show_method
     end
+
+    list do
+      fields :text, :rating, :book, :created_at, :user
+      field  :status, :state
+      field  :verified
+    end
+
+    edit do
+      field  :status, :state
+      fields :title, :text, :rating, :book, :created_at, :user
+    end
+
+    state({
+      states: {
+        unprocessed: 'btn-warning',
+        rejected:    'btn-danger',
+        approved:    'btn-success' }
+    })
   end
 
   config.model 'Author' do

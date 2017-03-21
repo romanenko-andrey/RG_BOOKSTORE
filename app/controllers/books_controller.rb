@@ -47,13 +47,6 @@ class BooksController < ApplicationController
     session[:sort] = params[:sort] || session[:sort] || Book::SORT_METHODS.first
   end
 
-  def book_params
-    params.require(:book).permit(:name, :author, :price, :description,
-                                 :demensions, :materials, :public_year,
-                                 :photo1, :photo2, :photo3, :photo4,
-                                 :title_photo, :alt)
-  end
-
   def note_params
     params.permit(:rating, :text).to_h
   end

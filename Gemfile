@@ -24,6 +24,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
+gem 'aasm'
 gem 'cancancan'
 gem 'carrierwave', '~> 1.0'
 gem 'devise'
@@ -53,10 +54,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda'
   gem 'shoulda-matchers'
-end
-
-group :development do
-  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
 end
 

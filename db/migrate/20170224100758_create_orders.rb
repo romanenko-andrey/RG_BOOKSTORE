@@ -12,8 +12,7 @@ class CreateOrders < ActiveRecord::Migration[5.0]
       t.string :card_name
       t.string :cvv
       t.string :mmyy
-
-      t.references :orders_state, foreign_key: true
+      
       t.references :user, foreign_key: true
 
       t.timestamps

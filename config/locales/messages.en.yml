@@ -9,7 +9,7 @@ en:
   carts:
     create:
       success: Coupon have successfully updated.
-      error: Coupon number is incorrect!
+      error: Coupon code is incorrect!
     update:
       success:
         book_add: Book have successfully added.

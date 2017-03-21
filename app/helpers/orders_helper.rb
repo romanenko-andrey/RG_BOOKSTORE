@@ -1,12 +1,8 @@
 # :nodoc:
 module OrdersHelper
   def humanize(order)
-    order.tr('_', ' ').titlecase
+    order.to_s.tr('_', ' ').titlecase
   end
-
-  # def orders
-  #   @order.items
-  # end
 
   def shipping
     @user.shipping_address

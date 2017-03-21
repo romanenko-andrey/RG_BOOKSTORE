@@ -4,8 +4,9 @@ class OrdersController < ApplicationController
   before_action :set_variables, only: :index
 
   def index
-    state = OrdersState.find_by(name: @state_order)
-    @orders = Order.where('user': current_user, 'orders_state': state)
+    @orders = Order.where(user: current_user)
+    return if @state_order.to_sym == @states_names_list.first
+    @orders = @orders.where(status: @state_order)
   end
 
   def show
@@ -18,7 +19,8 @@ class OrdersController < ApplicationController
   private
 
   def set_variables
-    @states_names_list = OrdersState.pluck(:name)
+    @states_names_list =  Order.assm_states
+    #OrdersState.pluck(:name)
     @state_order = params[:sort_by] || @state_order || @states_names_list.first
   end
 end

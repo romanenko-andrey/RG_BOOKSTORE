@@ -1,3 +1,17 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  min-height: auto !important;
+}
+
 .general-thumb-info .title {
   height: 60px;
 }
@@ -14,6 +28,16 @@
   margin-left: 20px;
   margin-right: 20px;
 }
+
+#error_explanation {
+  position: absolute;
+  z-index: 100;
+  top: 100px;
+  width: 50%;
+  left: 50%;
+  text-align: center;
+}
+
 .alert.fade {
   opacity: 0;
   -webkit-transition: opacity 0.15s linear;
@@ -21,13 +45,21 @@
   -o-transition: opacity 0.15s linear;
   transition: opacity 0.15s linear;
 }
+
 .alert.fade.in {
   opacity: 1;
 }
+
 .but-link {
   padding: 0;
   border: none;
   background: inherit;
+}
+
+.shopping-cart-button {
+  background: inherit;
+  vertical-align: top;
+  line-height: 36px;
 }
 
 .cvv-helper:after {
@@ -47,3 +79,4 @@
 .cvv-helper:hover::after{
   display: block;
 }
+

@@ -13,12 +13,14 @@ class CartsController < ApplicationController
   end
 
   def create
-    @cart[:coupon] = params[:coupon].to_f
-    flash[:notice] = I18n.t('carts.create.success')
-  rescue
-    flash[:alert] = I18n.t('carts.create.error')
-  ensure
-    redirect_to carts_path
+    coupon = Coupon.find_by(number: params[:coupon])
+    if coupon 
+      @cart[:coupon] = coupon.discont
+      flash[:notice] = I18n.t('carts.create.success')
+    else
+      flash[:alert] = I18n.t('carts.create.error')
+    end
+    redirect_to carts_path   
   end
 
   def update
@@ -63,7 +65,7 @@ class CartsController < ApplicationController
 
   def add_book_to_cart
     if @pos
-      @order[:sum] = @order[:sum].to_i + cart_add_params[:sum].to_i
+      @order[:sum] = @order[:sum].to_i + cart_params[:sum].to_i
     else
       @orders << cart_params
     end

@@ -22,6 +22,10 @@ module BooksHelper
     end
   end
 
+  def verified(note)
+    true if note.status == 'approved'
+  end
+
   def title_photo(book)
     book.photos.first.file.url
   end

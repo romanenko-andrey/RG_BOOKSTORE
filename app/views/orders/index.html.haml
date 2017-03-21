@@ -27,7 +27,7 @@
             %td
               %span.in-grey-600 Status
             %td
-              %span.font-16.in-grey-900.fw-300= humanize(order.orders_state.name)
+              %span.font-16.in-grey-900.fw-300= humanize(order.status)
           %tr
             %td
               %span.in-grey-600 Total
@@ -55,7 +55,7 @@
             %td
               %span.in-grey-900.font-16.fw-300= format_date_to_YYYYMMDD(order.created_at)
             %td
-              %span.font-16.in-grey-900.fw-300= humanize(order.orders_state.name)
+              %span.font-16.in-grey-900.fw-300= humanize(order.status)
             %td
               %strong.font-16= to_euro(order.total_cost)
       

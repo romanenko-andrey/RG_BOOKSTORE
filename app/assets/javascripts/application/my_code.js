@@ -6,7 +6,7 @@ window.setTimeout(function() {
 
 window.setTimeout(function() {
   $(".alert").alert('close');
-}, 2500);
+}, 3500);
 
 $(document).ready(function(){
   //preven enter chars in input form in the Cart_Page
