@@ -1,0 +1,62 @@
+%main.container.general-main-wrap
+  %h1.mt-0.mb-25 My Orders
+  %p.lead.small.mb-10.visible-xs Sort by
+  .dropdowns.dropdown.general-order-dropdown
+    %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+      = humanize(@state_order)
+      %i.fa.fa-angle-down.dropdown-icon.pull-right
+    %ul.dropdown-menu
+      - @states_names_list.each do |state|
+        %li= link_to "#{humanize(state)}", orders_path(sort_by: "#{state}")
+  .visible-xs
+    - @orders.each do |order|
+      .general-cart-item.divider-lg-bottom.pt-0
+        %table.table
+          %tr
+            %td.col-half
+              %span.in-grey-600 Number
+            %td.col-half
+              = link_to order_path(:id => order.id) do
+                %span.general-order-number= order.number
+          %tr
+            %td
+              %span.in-grey-600 Completed at
+            %td
+              %span.in-grey-900.font-16.fw-300= format_date_to_YYYYMMDD(order.created_at)
+          %tr
+            %td
+              %span.in-grey-600 Status
+            %td
+              %span.font-16.in-grey-900.fw-300= humanize(order.status)
+          %tr
+            %td
+              %span.in-grey-600 Total
+            %td
+              %strong.font-16= to_euro(order.total_cost)
+  
+  .hidden-xs.mb-res-50
+    %table.table.table-hover
+      %thead
+        %tr
+          %th
+            %span.in-grey-600 Number
+          %th
+            %span.in-grey-600 Completed at
+          %th
+            %span.in-grey-600 Status
+          %th
+            %span.in-grey-600 Total
+      %tbody
+        - @orders.each do |order|
+          %tr
+            %td
+              = link_to order_path(:id => order.id) do
+                %span.general-order-number= order.number
+            %td
+              %span.in-grey-900.font-16.fw-300= format_date_to_YYYYMMDD(order.created_at)
+            %td
+              %span.font-16.in-grey-900.fw-300= humanize(order.status)
+            %td
+              %strong.font-16= to_euro(order.total_cost)
+      
+

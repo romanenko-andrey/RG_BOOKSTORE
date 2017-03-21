@@ -1,0 +1,42 @@
+.form-group{ :class => field_class_when_error(form_name, :first_name) }
+  = f.label :first_name, :class=>'control-label input-label'
+  = f.text_field :first_name, class: 'form-control', placeholder: 'First Name'
+  %span.help-block{ :class => show_error_message(form_name, :first_name) } 
+    Please enter your first name
+
+.form-group{ :class => field_class_when_error(form_name, :last_name) }
+  = f.label :last_name, :class=>'control-label input-label'
+  = f.text_field :last_name, class: 'form-control', placeholder: 'Last Name'
+  %span.help-block{ :class => show_error_message(form_name, :last_name) } 
+    Please enter your last name
+      
+.form-group{ :class => field_class_when_error(form_name, :addressee) }
+  = f.label :addressee, "Address", :class=>'control-label input-label'
+  = f.text_field :addressee, class: 'form-control', placeholder: 'Address'
+  %span.help-block{ :class => show_error_message(form_name, :addressee) } 
+    Please enter your address
+
+.form-group{ :class => field_class_when_error(form_name, :city) }
+  = f.label :city, :class=>'control-label input-label'
+  = f.text_field :city, class: 'form-control', placeholder: 'City'
+  %span.help-block{ :class => show_error_message(form_name, :city) } 
+    Please enter your city
+      
+.form-group{ :class => field_class_when_error(form_name, :zip) }
+  = f.label :zip, :class=>'control-label input-label'
+  = f.text_field :zip, class: 'form-control', placeholder: 'Zip'
+  %span.help-block{ :class => show_error_message(form_name, :zip) } 
+    Please enter your zip-code
+
+.form-group{ :class => field_class_when_error(form_name, :country) }
+  = f.label :country, :class=>'control-label input-label'
+  = f.select :country, countries_select_options, {prompt: "Select a country"}, class: "form-control"
+  %span.help-block{ :class => show_error_message(form_name, :country) } 
+    Please select your country
+
+.form-group.mb-60{ :class => field_class_when_error(form_name, :phone) }
+  = f.label :phone, :class=>'control-label input-label'
+  = f.telephone_field :phone, class: 'form-control', placeholder: "Example +355 66 123 4567"
+  %span.help-block{ :class => show_error_message(form_name, :phone) } 
+    Please enter correct phone number
+

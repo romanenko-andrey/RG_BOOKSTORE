@@ -1,0 +1,52 @@
+.visible-xs
+  - @orders.each do |order|
+    .general-cart-item.divider-lg.mb-55
+      .general-img-wrap-table
+        = image_tag book_image_in(order), class: ['cart-img-shadow']
+      %p.title= order[:name]
+      %P.in-grey-600.fw-300= order[:short_description]
+      %table.table
+        %tr
+          %td
+            %span.in-grey-600 Price
+          %td
+            %span.font-16.in-gold-500= to_euro(order[:price])
+        %tr
+          %td.vertical-middle
+            %span.in-grey-600 Quantity
+          %td
+            %span= order[:sum]
+        %tr
+          %td
+            %span.in-grey-600 SubTotal
+          %td
+            %span.font-16.in-gold-500=  to_euro(sub_total order)
+
+.hidden-xs.divider-lg.pt-20
+  %table.table.table-hover
+    %thead
+      %tr
+        %th
+          %span.in-grey-600 Book
+        %th.col-method
+        %th
+          %span.in-grey-600 Price
+        %th
+          %span.in-grey-600 Quantity
+        %th
+          %span.in-grey-600 Total
+    %tbody
+      - @orders.each do |order|
+        %tr
+          %td
+            .general-img-wrap-table
+              = image_tag book_image_in(order), class: ['cart-img-shadow pull-left']
+          %td
+            %p.title= order[:name]
+            %p.in-grey-600.fw-300= order[:short_description]
+          %td
+            %span.font-16.in-gold-500= to_euro(order[:price])
+          %td
+            %span.ml-30= order[:sum]
+          %td
+            %span.font-16.in-gold-500=  to_euro(sub_total order)

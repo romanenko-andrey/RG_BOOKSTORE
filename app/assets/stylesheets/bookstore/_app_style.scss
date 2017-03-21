@@ -1,0 +1,82 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  min-height: auto !important;
+}
+
+.general-thumb-info .title {
+  height: 60px;
+}
+
+.general-thumb-info .lead {
+  height: 30px;
+}
+
+.small-book img{
+  max-height: 120px;
+}
+
+.mlr-20 {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#error_explanation {
+  position: absolute;
+  z-index: 100;
+  top: 100px;
+  width: 50%;
+  left: 50%;
+  text-align: center;
+}
+
+.alert.fade {
+  opacity: 0;
+  -webkit-transition: opacity 0.15s linear;
+  -moz-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+}
+
+.alert.fade.in {
+  opacity: 1;
+}
+
+.but-link {
+  padding: 0;
+  border: none;
+  background: inherit;
+}
+
+.shopping-cart-button {
+  background: inherit;
+  vertical-align: top;
+  line-height: 36px;
+}
+
+.cvv-helper:after {
+  content: "3-digit security code, usualy found on the back of you card. American Express cards has 4-digit code, located on the front";
+  font-family: sans-serif;
+  position: absolute;
+  top: 16px;
+  left: -300px;
+  width: 300px;
+  padding: 5px;
+  border: 1px solid grey;
+  background-color: rgba(200,200,200,0.5);
+  text-align: right;
+  display: none;
+}
+
+.cvv-helper:hover::after{
+  display: block;
+}
+

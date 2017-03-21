@@ -1,0 +1,9 @@
+en:
+  books:
+    sort_methods:
+      newest: Newest first
+      popular: Popular first
+      from_low_to_high_price: 'Price: Low to hight'
+      from_hight_to_low_price: 'Price: Top to down'
+      asc_title: Sort names from 'A' to 'Z'
+      desc_title: Sort names from 'Z' to 'A'

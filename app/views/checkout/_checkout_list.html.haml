@@ -1,0 +1,13 @@
+%h1.general-title-margin Checkout
+%ul.steps.list-inline
+  - wizard_steps.each_with_index do |stage, index|
+    %li.step{ :class => checout_step(index, step) }
+      %span.step-number
+        - if index+1 >= step
+          = index + 1
+        - if index+1 < step
+          %i.fa.fa-check.step-icon
+      %span.step-text.hidden-xs= stage.capitalize
+      - if index+1 < wizard_steps.count
+        %li.step-divider
+  

@@ -1,0 +1,37 @@
+%main.container
+  = render 'checkout_list', step: 1
+  
+  = form_for(@user, url: wizard_path, method: :patch, class: 'res-mb-100') do |user_form|
+    .hidden-xs.hidden-sm
+      .row
+        .col-md-5
+          %h3.general-subtitle Billing Address
+          %p.general-info-text all fields are required
+        .col-md-5.col-md-offset-1
+          %h3.general-subtitle Shipping Address
+    .row
+      .col-md-5.mb-40
+        = user_form.fields_for :billing_address do |billing_form|
+          .visible-xs.visible-sm
+            %h3.general-subtitle Billing Address
+            %p.general-info-text all fields are required
+          = render 'forms/address_form', f: billing_form, form_name: "billing_address"
+
+      .col-md-5.col-md-offset-1.mb-60
+        = user_form.fields_for :shipping_address do |shipping_form|
+          .visible-xs.visible-sm
+            %h3.general-subtitle Shipping Address
+          = render 'forms/address_form', f: shipping_form, form_name: "shipping_address"
+
+          .form-group.checkbox
+            = shipping_form.label :identical, class: 'checkbox-label' do
+              = shipping_form.check_box :identical, class: 'checkbox-input', hidden: "true"
+              %span.checkbox-icon
+                %i.fa.fa-check
+              %span.checkbox-text Use Billing Address
+    
+    .general-text-align.mb-60
+      %p.in-gold-500.font-18 Order Summary
+      %table.general-summary-table
+        = render 'summary'
+      = user_form.button 'Save and Continue', class: 'btn center-block mb-20'
