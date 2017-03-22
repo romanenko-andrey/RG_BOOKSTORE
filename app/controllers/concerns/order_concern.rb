@@ -23,8 +23,7 @@ module OrderConcern
     {
       user: @user, number: generate_order_number, items: @orders,
       discont: @cart[:coupon], delivery_methods: delivery.first,
-      delivery_cost: delivery.last, total_cost: @total,
-      orders_state: OrdersState.find_by(name: 'in_progress')
+      delivery_cost: delivery.last, total_cost: @total
     }
   end
 
