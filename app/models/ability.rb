@@ -18,7 +18,6 @@ class Ability
         can :create, Book
         can :read, [BillingAddress, ShippingAddress]
         can :manage, User, id: user.id
- #       can :manage, Checkout
         can [:read, :create, :update], Order, user_id: user.id
       end
     end

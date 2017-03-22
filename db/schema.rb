@@ -103,19 +103,11 @@ ActiveRecord::Schema.define(version: 20170321071724) do
     t.string   "card_name"
     t.string   "cvv"
     t.string   "mmyy"
-    t.integer  "orders_state_id"
     t.integer  "user_id"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
     t.string   "status"
-    t.index ["orders_state_id"], name: "index_orders_on_orders_state_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
-  create_table "orders_states", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "photos", force: :cascade do |t|
