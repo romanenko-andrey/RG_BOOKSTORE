@@ -1,4 +1,7 @@
-%w(User Photo Book Review Bestseller Newest Author Category Country Order).each do |database|
+# rake db:migrate RAILS_ENV=test
+# load Rails.root.join('db', 'test_seeds.rb')
+
+%w(User Photo Book Review Bestseller Newest Author Category Country Order Coupon).each do |database|
   eval("#{database}.destroy_all")
 end
 

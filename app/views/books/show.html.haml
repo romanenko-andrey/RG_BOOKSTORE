@@ -35,8 +35,7 @@
         %p#Readmore Description
         %p.lead.small.line-height-2
           #short_descr= markdown_short(@book.description)
-          #long_descr
-            = markdown_text(@book.description)
+          #long_descr= markdown_text(@book.description)
           %a.in-gold-500.ml-10{href: "#Readmore"} Read More
 
       .general-info-wrap.divider-lg

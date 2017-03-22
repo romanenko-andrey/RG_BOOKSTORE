@@ -1,5 +1,3 @@
-# rails db:seed command (or created alongside the database with db:setup).
-
 User.destroy_all
 Photo.destroy_all
 Book.destroy_all
@@ -10,6 +8,9 @@ Author.destroy_all
 Category.destroy_all
 Country.destroy_all
 Order.destroy_all
+Coupon.destroy_all
+
+FactoryGirl.create :coupon
 
 Country.create! [
   { name: 'USA', zip: '00' },

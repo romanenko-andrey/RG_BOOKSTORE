@@ -37,12 +37,11 @@ feature 'HomePage of Bookstore App', type: :feature do
       sign_in create(:user)
     end
 
-    scenario 'Log out, My account & Orders links are visible' do
+    scenario 'My account & Orders links are visible' do
       visit root_path
       expect(page).to have_current_path root_path
       expect(page).to have_content 'My account'
       expect(page).to have_content 'Orders'
-      expect(page).to have_content 'Log out'
     end
   end
 

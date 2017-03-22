@@ -1,6 +1,7 @@
 # :nodoc:
 class StaticPagesController < ApplicationController
   def index
+    byebug
     @latest_books = []
     Newest.first(3).each { |newest| @latest_books << newest.book }
     @bestsellers = []

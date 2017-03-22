@@ -9,8 +9,8 @@ RailsAdmin.config do |config|
   config.parent_controller = 'ApplicationController'
 
   config.actions do
-    dashboard                     # mandatory
-    index                         # mandatory
+    dashboard  
+    index     
     new
     export
     bulk_delete
