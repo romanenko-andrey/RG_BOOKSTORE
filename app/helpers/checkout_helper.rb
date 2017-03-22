@@ -25,4 +25,17 @@ module CheckoutHelper
   def billing
     @user.billing_address
   end
+
+  def identical_address?
+    @user.shipping_address.identical  
+  end
+
+  def selected_method(pos)
+    return if @cart[:delivery].nil? || @cart[:delivery].empty?
+    pos == @cart[:delivery].to_i ? true : false
+  end
+
+  def back_address
+    params['back']
+  end
 end

@@ -15,8 +15,10 @@ class Ability
       else
         can :new, Review
         can :create, Review, user_id: user.id
+        can :create, Book
         can :read, [BillingAddress, ShippingAddress]
         can :manage, User, id: user.id
+ #       can :manage, Checkout
         can [:read, :create, :update], Order, user_id: user.id
       end
     end

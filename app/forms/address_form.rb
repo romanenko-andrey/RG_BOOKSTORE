@@ -20,13 +20,13 @@ class AddressForm < Rectify::Form
   validates :addressee, presence: true, format: { with: VALID_ADDRESS_REGEX }
   validates :city, format: { with: VALID_ADDRESS_REGEX }
   validates :first_name, :last_name, :city, :addressee, length: { maximum: 50 }
-  validates :zip, length: { maximum: 10 }, format: { with: /\A[0-9\-]+\z/ }
+  validates :zip, length: { maximum: 10 }, format: { with: /\A[0-9_\-\s]+\z/ }
 
   validate :phone_code
 
   def phone_code
     country_name = Country.find_by(id: country)
-    return if country_name && phone =~ /\A\+#{country_name.zip}[\s0-9]{9,12}/
+    return if country_name && phone =~ /\A\+#{country_name.zip}[\s0-9]{9,16}/
     errors.add(:phone, I18n.t('validation.error_in_phone_code'))
   end
 end

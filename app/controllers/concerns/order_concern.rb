@@ -15,25 +15,28 @@ module OrderConcern
       session['last_order'] = last_order.id
       return
     end
-    order_update_and_save
-    flash[:notice] = I18n.t('checkout.new_order.success')
-    session['cart']['finished'] = true
-    session['last_order'] = @order.id
+    order_update
   end
 
   def orders_params
+    delivery = @shipping_list[@cart[:delivery].to_i]
     {
       user: @user, number: generate_order_number, items: @orders,
-      discont: @cart[:coupon], delivery_methods: @cart[:delivery].first,
-      delivery_cost: @cart[:delivery].last, total_cost: @total,
+      discont: @cart[:coupon], delivery_methods: delivery.first,
+      delivery_cost: delivery.last, total_cost: @total,
       orders_state: OrdersState.find_by(name: 'in_progress')
     }
   end
 
-  def order_update_and_save
+  def order_update
     @orders.each(&:stringify_keys!)
-    @order.update(orders_params)
-    @order.save
+    if @order.update(orders_params)
+      flash[:notice] = I18n.t('checkout.new_order.success')
+      session['cart']['finished'] = true
+      session['last_order'] = @order.id
+    else
+      flash[:error] = I18n.t('checkout.new_order.error')
+    end
   end
 
   def generate_order_number
@@ -47,8 +50,6 @@ module OrderConcern
       build_new_order
     end
     @total = calculate_totally_cost(@orders)
-  rescue
-    redirect_to carts_path
   end
 
   def load_existence_order
@@ -71,7 +72,10 @@ module OrderConcern
     books_cost = orders.reduce(0) do |total, order|
       total + order[:sum].to_f * order[:price].to_f
     end
-    books_cost - @cart[:coupon].to_f + @cart[:delivery].last.to_f
+    delivery = @shipping_list[@cart[:delivery].to_i]
+    books_cost - @cart[:coupon].to_f + delivery.last.to_f
+  rescue 
+    books_cost - @cart[:coupon].to_f
   end
 
   def save_cart

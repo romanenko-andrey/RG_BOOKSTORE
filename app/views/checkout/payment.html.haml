@@ -7,25 +7,30 @@
       = f.label :card_number, :class=>'control-label input-label'
       = f.number_field :card_number, class: 'form-control', placeholder: 'Card Number'
       %span.help-block{ :class => show_error_message(:credit_card, :card_number) }  
-        Please enter a valid credit card number
+        Please enter a valid credit card number (12 digits only)
     .row
       .col-sm-6
         .form-group{ :class => field_class_when_error(:credit_card, :card_name) }
           = f.label :card_name, "Name of Card", :class=>'control-label input-label'
           = f.text_field :card_name, class: 'form-control', placeholder: 'Name on Card'
+          %span.help-block{ :class => show_error_message(:credit_card, :card_name) }  
+            Please enter a valid name (example: Lilian Stamm)
       .col-sm-3
         .form-group{ :class => field_class_when_error(:credit_card, :mmyy) }
           = f.label :mmyy, "MM / YY", :class=>'control-label input-label'
           = f.text_field :mmyy, class: 'form-control', placeholder: 'MM / YY'
+          %span.help-block{ :class => show_error_message(:credit_card, :mmyy) }  
+            Please enter a valid data (example: 11/19)
       .col-sm-3
         .form-group.relative{ :class => field_class_when_error(:credit_card, :cvv) }
           = f.label :cvv, "CVV", :class=>'control-label input-label'
           = f.number_field :cvv, class: 'form-control', placeholder: 'CVV'
           %i.fa.fa-question-circle.general-form-help.cvv-helper
+          %span.help-block{ :class => show_error_message(:credit_card, :cvv) }  
+            Please enter a valid CVV code (example: 327 or 4339)
     .general-text-align
       %p.in-gold-500.font-18 Order Summary
       %table.general-summary-table
         = render 'summary'
     .text-center
-      /%button.btn.btn-default.mb-80 Save and Continue
       = f.submit 'Save and Continue', class: 'btn btn-default mb-80'

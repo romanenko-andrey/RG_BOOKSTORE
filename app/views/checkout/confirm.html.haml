@@ -6,7 +6,7 @@
       %h3.general-subtitle Shipping Address
       %p.general-address
         = full_name(shipping)
-        = link_to "edit", wizard_path(:address), class: 'general-edit'
+        = link_to "edit", wizard_path(:address, back: :confirm), class: 'general-edit'
         %br
         = shipping.addressee
         %br
@@ -19,7 +19,7 @@
       %h3.general-subtitle Billing Address
       %p.general-address
         = full_name(billing)
-        = link_to "edit", wizard_path(:address), class: 'general-edit'
+        = link_to "edit", wizard_path(:address, back: :confirm), class: 'general-edit'
         %br
         = billing.addressee
         %br
@@ -31,10 +31,10 @@
     .col-sm-3
       %h3.general-subtitle Shipments
       %p.general-address
-        = humanize(@cart[:delivery][0])
-        = link_to "edit", wizard_path(:delivery), class: 'general-edit'
+        = humanize(delivery_type)
+        = link_to "edit", wizard_path(:delivery, back: :confirm), class: 'general-edit'
         %br
-        = @cart[:delivery][1]
+        = delivery_time
     .col-sm-3
       %h3.general-subtitle Payment Information
       %p.general-address

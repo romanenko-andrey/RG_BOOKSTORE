@@ -3,6 +3,7 @@
 
   %h3.general-subtitle Shipping Method
   = form_tag(checkout_path, method: 'put') do
+    = hidden_field_tag 'back', "#{back_address}"
     .visible-xs
       .general-cart-item.divider-lg-bottom.mb-30
         - @shipping_list.each_with_index do |list, index|
@@ -13,9 +14,10 @@
               %td.col-half
                 .form-group.radio.mt-0.mb-0
                   %label.radio-label
-                    %input.radio-input{name: "delivery_method", value: index, type: "radio", hidden: "true"}
+                    = radio_button_tag "delivery_method", index, checked = selected_method(index), class: "radio-input", hidden: "true"
                     %span.radio-icon
                     %span.radio-text= humanize(list[0])
+
             %tr
               %td
                 %span.in-grey-600 Days
@@ -43,9 +45,10 @@
               %td
                 .form-group.radio.mt-0.mb-0
                   %label.radio-label
-                    %input.radio-input{name: "delivery_method", value: index, type: "radio", hidden: "true"}
+                    = radio_button_tag "delivery_method", index, checked = selected_method(index), class: "radio-input", hidden: "true"
                     %span.radio-icon
                     %span.radio-text= humanize(list[0])
+
               %td
                 %span= list[1]
               %td

@@ -24,9 +24,10 @@ module AddressConcern
 
   def update_shipping_address
     form = AddressForm.from_params(address_params 'shipping')
-    if form.identical
-      form.identical = true
-      @user.shipping_address.update @bill_form.attributes
+    if params[:identical] #form.identical
+      new_attributes = @bill_form.attributes
+      new_attributes[:identical] = true
+      @user.shipping_address.update new_attributes
     else
       @user.shipping_address.update form.attributes
       flash[:shipping_address] = form.errors unless form.valid?

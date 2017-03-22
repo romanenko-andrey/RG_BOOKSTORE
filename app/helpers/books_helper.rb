@@ -6,7 +6,7 @@ module BooksHelper
 
   def user_first_letter(note)
     return note.user.name.first if note.user.name
-    note.user.email.first
+    note.user.email.first.upcase
   end
 
   def user_name(note)

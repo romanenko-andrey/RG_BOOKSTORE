@@ -16,12 +16,24 @@ module CartsHelper
     @cart[:coupon]
   end
 
+  def delivery_item
+    @shipping_list[@cart[:delivery].to_i] if delivery?
+  end
+
   def delivery_cost
-    @cart[:delivery].last if delivery?
+    delivery_item.last if delivery?
+  end
+
+  def delivery_type
+    delivery_item.first if delivery?
+  end
+
+  def delivery_time
+    delivery_item[1] if delivery?
   end
 
   def delivery?
-    !@cart[:delivery].nil?
+    !(@cart[:delivery].nil? || @cart[:delivery].empty?)
   end
 
   def order_total

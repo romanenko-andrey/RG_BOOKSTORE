@@ -44,6 +44,29 @@ $(document).ready(function(){
     })
   }
 
+   //check button in checkout addresses page
+   hidden_block = $("#hiddenabble_address_block");
+   hidden_element = $('p#hidden_test_block');
+   if (hidden_block) {
+     if (hidden_element.length) {
+       hidden_block.show(0);
+       show = true
+     } else {
+       hidden_block.hide(0);
+       show = false;
+     };
+
+     $(".checkbox-input").click(function(){
+        if (show) {
+          hidden_block.hide(0);
+          show = false;
+        } else {
+          hidden_block.show(0)
+          show = true
+        }
+     })
+   }
+
 });//document_ready
 
 

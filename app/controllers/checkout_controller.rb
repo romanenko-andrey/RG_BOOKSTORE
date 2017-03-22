@@ -2,9 +2,10 @@
 class CheckoutController < ApplicationController
   include Wicked::Wizard
   include AddressConcern
-  include OrderConcern
-  include CreditConcern
   include DeliveryConcern
+  include CreditConcern
+  include OrderConcern
+ 
   steps :address, :delivery, :payment, :confirm, :complete
 
   before_action :authenticate_user!
@@ -26,9 +27,12 @@ class CheckoutController < ApplicationController
   end
 
   def update
-    render_wizard(@user) if update_addresses? ||
-                            update_shipping_method? ||
-                            update_credit_card?
+    if update_addresses? || update_shipping_method? || update_credit_card?
+      back = params['back']
+      jump_to(back.to_sym) unless back.nil? || back.empty?
+      render_wizard(@user)  
+    end
+
     redirect_to books_path if create_new_order?
     redirect_to checkout_path(@step) if flash[:error]
   end

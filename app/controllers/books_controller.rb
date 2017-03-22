@@ -17,10 +17,10 @@ class BooksController < ApplicationController
   def create
     note = Review.new(user: current_user, book: @book)
     if note.update(note_params)
-      redirect_to books_path, notice: I18n.t('books.create.success')
+      redirect_to books_path, notice: I18n.t('review.create.success')
     else
       flash[:error] = note.errors.messages.join(' ,')
-      redirect_to book_path(@book), alert: I18n.t('books.create.error')
+      redirect_to book_path(@book), alert: I18n.t('review.create.error')
     end
   end
 
