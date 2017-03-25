@@ -1,9 +1,10 @@
 require 'rails_helper'
 include Support::UserAuth
+include Support::LoadDataBase
 
 feature 'HomePage of Bookstore App', type: :feature do
   before :all do
-    load Rails.root.join('db', 'test_seeds.rb')
+    initialisation_bookstore
   end
 
   context 'home page' do

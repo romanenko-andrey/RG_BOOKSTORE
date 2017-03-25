@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Show book' do
+feature 'Show book', type: :feature do
   let(:book) { create(:book) }
   background do
     visit book_path(id: book.id)
@@ -16,7 +16,7 @@ feature 'Show book' do
     expect(page).to have_content(book.materials)
   end
 
-  scenario "Show full book's description", js: true do
+  scenario "Show full book's description" do
     visit book_path(id: book.id)
     page.should have_css('#short_descr')
     page.should have_no_css('#long_descr')
