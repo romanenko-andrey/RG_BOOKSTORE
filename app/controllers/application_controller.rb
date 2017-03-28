@@ -1,7 +1,7 @@
 # :nodoc:
 class ApplicationController < ActionController::Base
   rescue_from ActionController::RoutingError, with: :error_render_method
-  # rescue_from ActionView::Template::Error, with: :error_view_template
+ # rescue_from ActionView::Template::Error, with: :error_view_template
   rescue_from Wicked::Wizard::InvalidStepError, with: :error_step_in_path_params
   rescue_from CanCan::AccessDenied, with: :error_access_deninied
 
@@ -36,7 +36,6 @@ class ApplicationController < ActionController::Base
   end
 
   def rails_admin_path?
-    # controller_path =~ /rails_admin/ && Rails.env.development?
-    controller_path =~ /static_pages/ && Rails.env.development?
+    controller_path =~ /rails_admin/ && Rails.env.development?
   end
 end

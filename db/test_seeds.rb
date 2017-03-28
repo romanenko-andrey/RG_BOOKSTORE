@@ -29,7 +29,7 @@ User.first.shipping_address.update(FactoryGirl.attributes_for(:shipping_address)
 FactoryGirl.create :coupon
 
 Category.find_each do |category|
-  FactoryGirl.create_list(:book, 4, category: category)
+  FactoryGirl.create_list(:book, 1, category: category)
 end
 
 Book.find_each do |book|

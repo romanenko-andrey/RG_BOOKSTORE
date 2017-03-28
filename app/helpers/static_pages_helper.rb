@@ -1,6 +1,6 @@
 # :nodoc:
 module StaticPagesHelper
-  def active(first_book_id, book_id)
-    'active' if first_book_id == book_id
+  def active(first_book_id, book)
+    'active' if book && first_book_id == book.id
   end
 end

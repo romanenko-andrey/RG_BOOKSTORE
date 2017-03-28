@@ -25,6 +25,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'aasm'
+gem 'bootstrap-sass'
 gem 'cancancan'
 gem 'carrierwave', '~> 1.0'
 gem 'devise'

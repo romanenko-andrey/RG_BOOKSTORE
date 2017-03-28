@@ -1,11 +1,20 @@
 require 'rails_helper'
 
-describe User, type: :model do
+RSpec.describe User, type: :model do
   subject(:user) { create(:user) }
 
   context 'validation' do
+    it { should validate_presence_of(:password) }
+    it { should validate_presence_of(:email) }
     it { should validate_length_of(:email).is_at_most(63) }
     it { should validate_length_of(:password).is_at_least(8) }
+  end
+
+  context 'Associations' do
+    it { should have_many(:reviews).dependent(:destroy) }
+    it { should have_many(:orders).dependent(:destroy) }
+    it { should have_many(:billing_address).dependent(:destroy) }
+    it { should have_many(:shipping_address).dependent(:destroy) }
   end
 
   context 'user must have required fields' do

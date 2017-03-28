@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Coupon, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'Validation' do
+    it { should validate_presence_of(:number) }
+    it { should validate_presence_of(:discont) }
+    it { should validate_presence_of(:status) }
+  end
 end

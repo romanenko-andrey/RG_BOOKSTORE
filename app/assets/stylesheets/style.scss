@@ -1,9 +1,7 @@
 @import "custom/_variables";
-@import "_bootstrap";
+@import "bootstrap";
 @import "custom/_theme";
 @import "bookstore/_general";
 @import "bookstore/utils/_helpers";
-@import "_variables";
-@import "_overrides";
 @import "bookstore/_app_style";
 @import "font-awesome";

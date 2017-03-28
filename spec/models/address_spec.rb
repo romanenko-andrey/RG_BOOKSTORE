@@ -1,11 +1,12 @@
 require 'rails_helper'
 
-describe 'BillingAddress & ShippingAddress' do
+RSpec.describe 'BillingAddress & ShippingAddress' do
   let(:user) { create :user }
 
   context 'associations' do
     it 'belong to user' do
       expect(BillingAddress.find_by(user: user.id).id).to eq(user.billing_address.id)
+      expect(ShippingAddress.find_by(user: user.id).id).to eq(user.shipping_address.id)
     end
   end
 

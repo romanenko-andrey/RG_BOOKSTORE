@@ -1,13 +1,18 @@
 require 'rails_helper'
 
 feature 'Show book', type: :feature do
-  let(:book) { create(:book) }
-  background do
+  before :all do
+    Category.create! name: 'Mobile development'
+    create(:book)
+  end
+
+  let(:book) { Book.first }
+  
+  before :each do
     visit book_path(id: book.id)
   end
 
   scenario 'Must show book attributes' do
-    byebug
     expect(page).to have_content(book.name)
     expect(page).to have_content(book.price)
     expect(page).to have_content(book.authors.first.first_name)
@@ -16,15 +21,15 @@ feature 'Show book', type: :feature do
     expect(page).to have_content(book.materials)
   end
 
-  scenario "Show full book's description" do
-    visit book_path(id: book.id)
-    page.should have_css('#short_descr')
-    page.should have_no_css('#long_descr')
+  scenario "Can show/hide full book's description" do
+    byebug
+    expect(page).to have_selector('#short_descr', visible: true)
+    expect(page).to have_selector('#long_descr', visible: false)
     find_link('Read More').click
-    page.should have_no_css('#short_descr')
-    page.should have_css('#long_descr')
+    expect(page).to have_selector('#short_descr', visible: false)
+    expect(page).to have_selector('#long_descr', visible: true)
     find_link('Hide Info').click
-    page.should have_css('#short_descr')
-    page.should have_no_css('#long_descr')
+    expect(page).to have_selector('#short_descr', visible: true)
+    expect(page).to have_selector('#long_descr', visible: false)
   end
 end
