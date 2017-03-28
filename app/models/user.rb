@@ -1,7 +1,5 @@
 # :nodoc:
 class User < ApplicationRecord
-  extend OmniauthAuthenticable
-
   has_many :reviews, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_one :billing_address, dependent: :destroy
@@ -9,7 +7,10 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :billing_address
   accepts_nested_attributes_for :shipping_address
 
-  after_create :create_billing_address, :create_shipping_address
+  after_create do
+    create_billing_address first_name: self.first_name, last_name: self.last_name
+    create_shipping_address
+  end
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable,
@@ -30,6 +31,23 @@ class User < ApplicationRecord
       user.uid = auth.uid
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
+
+      get_user_name(user, auth)
+    end
+  end
+
+  def self.get_user_name(user, auth)
+    user.first_name = auth.info.first_name
+    user.last_name = auth.info.last_name
+    full_name = auth.info.name
+    if full_name 
+      full_name = full_name.split(' ')
+      if full_name.size == 2 
+         user.first_name = full_name.first
+         user.last_name = full_name.last
+      elsif 
+        user.first_name = auth.info.name
+      end 
     end
   end
 end

@@ -19,7 +19,7 @@ Country.create! [
   { name: 'Ukraine', zip: '38' }
 ]
 
-User.create! [{ name: 'Admin', admin: true, email: 'admin@test.com',
+User.create! [{ first_name: 'Admin', admin: true, email: 'admin@test.com',
                 password: '12345678', password_confirmation: '12345678' }]
 
 User.first.billing_address.update(FactoryGirl.attributes_for(:billing_address))
