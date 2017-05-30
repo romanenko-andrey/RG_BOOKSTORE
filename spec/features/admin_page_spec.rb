@@ -1,4 +1,4 @@
-feature 'Admin page:' do
+feature 'Admin page:', type: :feature do
   context 'when ordinary user' do
     before { sign_in create(:user) }
 

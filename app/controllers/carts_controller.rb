@@ -35,6 +35,17 @@ class CartsController < ApplicationController
 
   private
 
+  def add_cart?
+    add_book_to_cart if cart_params[:sum]
+  end
+
+  def book_count_changed?
+    return unless params[:change]
+    rez = @order[:sum]
+    rez = rez.to_i + params[:change].to_i
+    @order[:sum] = rez < 0 ? 0 : rez
+  end
+
   def delete_book?
     @orders.delete_at(@pos) if params[:del]
   end
@@ -77,16 +88,5 @@ class CartsController < ApplicationController
 
   def cart_params
     params.slice(:id, :sum).permit(:id, :sum)
-  end
-
-  def add_cart?
-    add_book_to_cart if cart_params[:sum]
-  end
-
-  def book_count_changed?
-    return unless params[:change]
-    rez = @order[:sum]
-    rez = rez.to_i + params[:change].to_i
-    @order[:sum] = rez < 0 ? 0 : rez
   end
 end

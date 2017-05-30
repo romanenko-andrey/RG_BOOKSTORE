@@ -1,4 +1,4 @@
-feature 'Book page:' do
+feature 'Book page:', type: :feature do
   let!(:order) { create :order, :with_items }
   let(:item) { order.order_items.first }
   let(:book) { item.book }

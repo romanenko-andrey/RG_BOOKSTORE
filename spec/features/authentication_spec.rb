@@ -1,4 +1,4 @@
-feature 'Authentication:' do
+feature 'Authentication:', type: :feature do
   context 'when user exists in database' do
     let(:user) { create :user }
 

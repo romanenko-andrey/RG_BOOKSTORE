@@ -18,6 +18,8 @@ class Book < ApplicationRecord
   SORT_METHODS = [:newest, :popular, :asc_title, :desc_title,
                   :from_low_to_high_price, :from_hight_to_low_price].freeze
 
+  default_scope { order(name: :asc) }
+
   scope :newest, -> { order(created_at: :desc) }
   scope :popular, -> { all }
   scope :asc_title, -> { order(name: :asc) }

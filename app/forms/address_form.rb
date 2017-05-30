@@ -16,7 +16,7 @@ class AddressForm < Rectify::Form
 
   validates :first_name, :last_name, :city, presence: true
   validates :zip, :country, :phone, presence: true
-  validates :first_name, :last_name, format: { with: /\A[a-z]+\z/i }
+  validates :first_name, :last_name, format: { with: /\A[a-zа-я]+\z/i }
   validates :addressee, presence: true, format: { with: VALID_ADDRESS_REGEX }
   validates :city, format: { with: VALID_ADDRESS_REGEX }
   validates :first_name, :last_name, :city, :addressee, length: { maximum: 50 }

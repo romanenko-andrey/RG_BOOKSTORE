@@ -1,5 +1,4 @@
-feature 'Settings address page:' do
-  populate_bookstore
+feature 'Settings address page:', type: :feature do
 
   it 'dont pass guests' do
     visit settings_address_path

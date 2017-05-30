@@ -1,6 +1,6 @@
 module Support
   module LoadDataBase
-    def initialisation_bookstore
+    def bookstore_initialisation
       load Rails.root.join('db', 'test_seeds.rb')
     end
   end

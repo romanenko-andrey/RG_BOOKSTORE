@@ -1,4 +1,4 @@
-feature 'Settings profile page:' do
+feature 'Settings profile page:', type: :feature do
   it 'dont pass guests' do
     visit settings_profile_path
     expect(page).to have_current_path new_user_session_path
@@ -34,7 +34,7 @@ feature 'Settings profile page:' do
 
   context 'password' do
     let!(:user) { create :user }
-    let(:password) { 'secret))))' }
+    let(:password) { '12345678' }
 
     before { sign_in user }
     before { visit settings_profile_path }

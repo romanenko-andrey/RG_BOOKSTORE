@@ -1,6 +1,4 @@
-feature 'Categories page:' do
-  populate_bookstore
-
+feature 'Categories page:', type: :feature do
   context 'when all categories' do
     before { visit categories_path }
 

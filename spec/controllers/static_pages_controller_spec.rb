@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe PagesController do
-  describe 'GET #home' do
-    before { get :home }
+RSpec.describe StaticPagesController do
+  describe 'GET #index' do
+    before { get :index }
 
-    it 'renders :home template' do
-      expect(response).to render_template :home
+    it 'renders :index template' do
+      expect(response).to render_template :index
     end
 
     it 'responds successfully with an HTTP 200 status code' do
@@ -13,8 +13,8 @@ RSpec.describe PagesController do
       expect(response).to have_http_status(200)
     end
 
-    it 'assigns @books' do
-      expect(assigns(:books)).not_to be_nil
+    it 'assigns @active_book' do
+      expect(assigns(:active_book)).not_to be_nil
     end
 
     it 'assigns @latest_books' do

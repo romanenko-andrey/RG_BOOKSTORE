@@ -4,7 +4,7 @@ include Support::LoadDataBase
 
 feature 'HomePage of Bookstore App', type: :feature do
   before :all do
-    initialisation_bookstore
+    bookstore_initialisation
   end
 
   context 'home page' do

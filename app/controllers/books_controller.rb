@@ -19,7 +19,9 @@ class BooksController < ApplicationController
     if note.update(note_params)
       redirect_to books_path, notice: I18n.t('review.create.success')
     else
-      flash[:error] = note.errors.messages.join(' ,')
+      error_msg = ''
+      note.errors.messages.each{|p| error_msg += ("#{p.to_a.join(' ')}\; ")}
+      flash[:error] = error_msg
       redirect_to book_path(@book), alert: I18n.t('review.create.error')
     end
   end

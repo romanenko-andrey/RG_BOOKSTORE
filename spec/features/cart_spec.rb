@@ -1,5 +1,5 @@
-feature 'Cart page:' do
-  populate_bookstore
+feature 'Cart page:', type: :feature do
+
   let(:coupon) { create :coupon }
   let(:valid_code) { coupon.code }
   let(:invalid_code) { 'invalid' }

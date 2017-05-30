@@ -1,5 +1,4 @@
-feature 'Checkout page:' do
-  populate_bookstore
+feature 'Checkout page:', type: :feature do
   let!(:user) { create(:user) }
   before { sign_in user }
   before { create_list :delivery, 3 }
