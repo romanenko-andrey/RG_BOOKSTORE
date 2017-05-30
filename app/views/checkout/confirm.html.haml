@@ -1,0 +1,55 @@
+%main.container.general-main-wrap
+  = render 'checkout_list', step: 4
+  
+  .row.mb-20
+    .col-sm-3
+      %h3.general-subtitle Shipping Address
+      %p.general-address
+        = full_name(shipping)
+        = link_to "edit", wizard_path(:address, back: :confirm), class: 'general-edit'
+        %br
+        = shipping.addressee
+        %br
+        = "#{shipping.city} #{shipping.zip}"
+        %br
+        = countries_select_options(shipping.country.to_i).name
+        %br
+        = "Phone #{shipping.phone}"
+    .col-sm-3
+      %h3.general-subtitle Billing Address
+      %p.general-address
+        = full_name(billing)
+        = link_to "edit", wizard_path(:address, back: :confirm), class: 'general-edit'
+        %br
+        = billing.addressee
+        %br
+        = "#{billing.city} #{billing.zip}"
+        %br
+        = countries_select_options(billing.country.to_i).name
+        %br
+        = "Phone #{billing.phone}"
+    .col-sm-3
+      %h3.general-subtitle Shipments
+      %p.general-address
+        = humanize(delivery_type)
+        = link_to "edit", wizard_path(:delivery, back: :confirm), class: 'general-edit'
+        %br
+        = delivery_time
+    .col-sm-3
+      %h3.general-subtitle Payment Information
+      %p.general-address
+        = hide_cradit_card_code(@cart[:credit_card][:card_number])
+        = link_to "edit", wizard_path(:payment), class: 'general-edit'
+        %br
+        = @cart[:credit_card][:mmyy]
+  
+  = render 'order_books'
+  
+  .text-center.general-text-right
+    %p.in-gold-500.font-18 Order Summary
+    %table.general-summary-table.general-summary-table-right.general-text-right
+      = render 'summary'
+  .text-center
+    = form_tag(checkout_path, method: 'put') do
+      %button.btn.btn-default.mb-20 Place Order
+

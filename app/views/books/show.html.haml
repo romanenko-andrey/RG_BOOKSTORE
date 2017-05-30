@@ -1,0 +1,73 @@
+%main.container
+  = link_to books_path, class: "general-back-link" do
+    %i.fa.fa-long-arrow-left.mr-15
+    Back to results
+  .row
+    .col-sm-6
+      .product-gallery
+        .mb-20
+          = image_tag title_photo(@book), alt: @book.alt, class: ['img', 'img-responsive']
+        .images.clearfix
+          %a.img-link.small-book{href: "#"}
+            = image_tag book_photo(@book, 1), alt: @book.alt
+          %a.img-link.small-book{href: "#"}
+            = image_tag book_photo(@book, 2), alt: @book.alt
+          %a.img-link.small-book{href: "#"}
+            = image_tag book_photo(@book, 3), alt: @book.alt
+    .col-sm-6
+      %h1.mt-res-0= @book.name
+      %p.lead.small= authors_to_string(@book.authors)
+      .row
+        =form_tag(cart_path(@book.id), method: 'patch') do
+          .col-xs-12.col-md-4
+            %p.h1.in-gold-500.mt-10= to_euro(@book.price)
+          .col-xs-5.col-md-3
+            .input-group.general-position
+              %a.input-link{name: 'button_minus'}
+                %i.fa.fa-minus.line-height-40
+              = text_field_tag :sum, '1', class: 'form-control quantity-input input_book_count'
+              %a.input-link{name: 'button_plus'}
+                %i.fa.fa-plus.line-height-40
+          .col-xs-7.col-md-5
+            = submit_tag 'Add to Cart', class: 'btn btn-default pull-right general-position'
+                
+      .general-info-wrap.divider-lg
+        %p#Readmore Description
+        %p.lead.small.line-height-2
+          #short_descr= markdown_short(@book.description)
+          #long_descr= markdown_text(@book.description)
+          %a.in-gold-500.ml-10{href: "#Readmore"} Read More
+
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left Year of publication
+          %p.lead.small.pull-right= @book.public_year
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left Dimensions
+          %p.lead.small.pull-right= @book.dimensions
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left Materials
+          %p.lead.small.pull-right= @book.materials
+
+  -if user_signed_in?
+    .general-message-wrap.divider-lg
+      %h3.in-gold-500.mb-25 Write a Review
+      = form_tag(books_path, method: 'post', class: 'max-600 mb-80') do
+        .form-group
+          = hidden_field_tag :id, @book.id
+          %label.control-label.input-label Rating
+          = number_field_tag :rating, nil, min: 1, max: 5, class: 'form-control max-60'
+          %span.help-block
+            Please enter your rating of the book (number from 0 to 5)
+        .form-group
+          %label.control-label.input-label Your comments
+          = text_area_tag :text, nil, cols: 40, rows: 5, class: 'form-control'
+        = submit_tag 'Post', class: 'btn btn-default'
+
+  .mb-25
+    %h3.in-gold-500.mb-25 Reviews (#{@book.reviews.count})
+    = render :partial => 'comments', collection: @book.reviews, as: :note
+
+

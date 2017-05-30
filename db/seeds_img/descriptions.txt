@@ -1,0 +1,166 @@
+Node.js Projects
+By Fernando Monteiro
+2016
+
+V06202_MockupCover.jpg
+
+Node.js is the most popular framework to create server-side applications with, be it web, desktop, or mobile. Covering a wide variety of applications from simple to complex responsive ones, this course will show you how you can create applications from scratch using Node.js 6.X.
+While building these applications, we’ll employ several other frameworks and you’ll get a solid understanding of how to integrate and use other frameworks in tandem with Node.JS 6.X. You’ll create a data intensive application with MongoDB, use AngularJS to create a front-end application, and utilize Bootstrap to create a truly responsive web app. We will also show you how to use socket frameworks with your Node.js applications.
+
+
+
+Learning. SQL Server 2016 Database Reporting
+Dallas Snider
+2017
+
+V05929_MockupCover.jpg
+
+
+With SQL Server 2016 Reporting Services, users are excited about being able to visualize their data in new, creative ways for use in presentations, analysis, and decision support—even on mobile devices.
+In this course, users will receive step-by-step instructions on how to create stunning, high-impact reports. The course starts with an introduction to the technologies employed. Next, users are shown how to create a basic report and then how to format it and add features (such as headers and footers) to make it more readable, impressive, and practical. The course teaches how to create drill-down and drill-through reports. Pie charts, gauges. and maps are next on the agenda and the course wraps up with lessons on how to assemble a dashboard on the SQL Server Reporting Services web portal. This course will empower you to overcome any obstacle while creating interactive, visually-appealing reports using SQL Server 2016 Reporting Services.
+
+
+The Principles of Beautiful Web Design
+by Jason Beaird
+2007
+BigImg
+
+principles-of-beautiful-web-design.jpg
+beautiful web - img2.jpg 
+beautiful web - img2.jpg
+beautiful web - img2.jpg
+
+A simple, easy-to-follow guide, illustrated with plenty of full-color examples, this book will lead you through the process of creating great designs from start to finish. Good design principles are not rocket science, and using the information contained in this book will help you create stunning web sites.
+Understand the design process, from discovery to implementation Understand what makes "good design" Developing pleasing layouts using grids, the rule of thirds, balance and symmetry Use color effectively, develop color schemes and create a palette Use textures, lines, points, shapes, volumes and depth Learn how good typography can make ordinary designs look great Effective imagery: choosing, editing and placing images And much more Throughout the book, you'll follow an example design, from concept to completion, learning along the way. The book's full-color layout and large format (8" x 10") make The Principles Of Beautiful Wed Design a pleasure to read.
+
+
+DIGITAL ADAPTATION
+by Paul Boag
+2014
+
+mailing-image-Digital-Adaptation-standing-hardcover-v5-opt1.png
+digital-adaptation-bookcover-01.jpg
+digital-adaptation-bookcover-02.jpg
+digital-adaptation-bookcover-03.jpg
+
+Nothing is more frustrating than stubborn management entangled in dated workflows and inefficient processes. That's why we created Digital Adaptation, a new practical book on how to help senior management understand the Web and adapt the business, culture, team structure and workflows accordingly. No fluff, no theory — just techniques and strategies that worked in practice and showed results.
+The book will help traditional businesses and organizations to overcome their legacy, and help you plant the seeds of change with very little power. If you do want to finally see changes happening, this is the book to grab.
+
+
+Learning Web Design | A Beginners Guide to (X)HTML, Style Sheets and Web Graphics 3rd Edition
+by Jennifer Niederst Robbins
+2013
+
+learning-web-design-a-beginners-guide.png
+book-learningweb-theme1.jpg
+book-learningweb-theme2.jpg
+
+The book suggestion of this week is about web design and a little bit of programming. The title of the book is Learning Web Design: A Beginner's Guide to HTML, CSS, JavaScript, and Web Graphics and it's a good introduction to the technologies behind web sites, web apps and mobile web apps. I personally believe every designer that works with web and mobile design should master HTML/CSS/Javascript. It's very important because knowing these technologies will allow you to prototype your designs pretty quickly.
+
+
+
+JAVASCRIPT & JQUERY. Interactive front-end web development.
+Jon Duckett
+
+javascript-and-jquery-book-cover.png
+js_jq1.jpg
+js_jq2.jpg
+js_jq3.jpg
+js_jq4.jpg
+
+A two-book set for web designers and front-end developers
+This two-book set combines the titles HTML & CSS: Designing and Building Web Sites and JavaScript & jQuery: Interactive Front-End Development. Together these two books form an ideal platform for anyone who wants to master HTML and CSS before stepping up to JavaScript and jQuery.
+
+HTML & CSS covers structure, text, links, images, tables, forms, useful options, adding style with CSS, fonts, colors, thinking in boxes, styling lists and tables, layouts, grids, and even SEO, Google analytics, ftp, and HTML5. JavaScript & jQuery offers an excellent combined introduction to these two technologies using a clear and simple visual approach using diagrams, infographics, and photographs.
+
+Responsive Web Design 2nd edition
+Ethan Marcotte
+2014
+responsive web design.jpg
+responsive web design1.jpg
+responsive web design2.jpg
+responsive web design3.jpg
+responsive web design4.jpg
+
+Learn how to think beyond the desktop, and craft designs that respond to your users’ needs. In the second edition, Ethan Marcotte expands on the design principles behind fluid grids, flexible images, and media queries. Through new examples and updated facts and figures, you’ll learn how to deliver a quality experience, no matter how large or small the display.
+Discover new tips and tricks for browser support, take a closer look at solutions for serving images, explore the role of progressive enhancement in web design, find better methods for managing bandwidth, and more. Follow along with the new examples and approaches Ethan has assembled, and dive in to his meticulously revised code samples.
+
+
+Android: Programming for Developers
+John Horton
+2016
+C06035.jpg
+
+Android is the most popular OS in the world. There are millions of devices accessing tens of thousands of applications. It is many people's entry point into the world of technology. The Android: Programming for Developers course will take you on a journey to become an efficient Android programmer by thoroughly understanding the key concepts of Android programming and develop market-ready applications.
+With a good grasp on the basics, you move on the final module, Mastering Android Game Development. This progressive module will help you learn to use animations and particle systems to provide a rich experience. By the end of the course, you will create beautiful, responsive, and reusable UIs by taking advantage of the Android SDK.
+
+
+Android: Programming for Beginners
+John Horton
+2015
+
+9781785883262.png
+
+Android Programming for Beginners will be your companion to create Android applications from scratch—whether you’re looking to start your programming career, make an application for work, be reintroduced to mobile development, or are just looking to program for fun. We will introduce you to all the fundamental concepts of programming in an Android context, from the Java basics to working with the Android API. All examples are created from within Android Studio, the official Android development environment that helps supercharge your application development process.
+After this crash-course, we’ll dive deeper into Android programming and you’ll learn how to create applications with a professional-standard UI through fragments, make location-aware apps with Google Maps integration, and store your user’s data with SQLite. In addition, you’ll see how to make your apps multilingual, capture images from a device’s camera, and work with graphics, sound, and animations too.
+By the end of this book, you’ll be ready to start building your own custom applications in Android and Java.
+
+
+Laravel 5.x Cookbook
+Alfred Nutile
+2016
+
+B05517_MockupCover_Cookbook_0.jpg
+
+Laravel is a prominent member of a new generation of web frameworks. It is one of the most popular PHP frameworks and is also free and an open source. Laravel 5 is a substantial upgrade with a lot of new toys, at the same time retaining the features that made Laravel wildly successful. It comes with plenty of architectural as well as design-based changes.
+
+The book is a blend of numerous recipes that will give you all the necessary tips you need to build an application. It starts with basic installation and configuration tasks and will get you up-and-running in no time. You will learn to create and customize your PHP app and tweak and re-design your existing apps for better performance. You will learn to implement practical recipes to utilize Laravel's modular structure, the latest method injection, route caching, and interfacing techniques to create responsive modern-day PHP apps that stand on their own against other apps. Efficient testing and deploying techniques will make you more confident with your Laravel skills as you move ahead with this book.
+
+Towards the end of the book, you will understand a number of add-ons and new features essential to finalize your application to make it ready for subscriptions. You will be empowered to get your application out to the world.
+
+
+Kyle Mew Learning Material Design
+Kyle Mew
+2016
+
+9781785289811.png
+material design1.jpg
+
+Google's Material Design language has taken the web development and design worlds by storm. Now available on many more platforms than Android, Material Design uses color, light, and movements to not only generate beautiful interfaces, but to provide intuitive navigation for the user.
+Learning Material Design will teach you the fundamental theories of Material Design using code samples to put these theories into practice.
+Focusing primarily on Android Studio, you’ll create mobile interfaces using the most widely used and powerful material components, such as sliding drawers and floating action buttons. Each section will introduce the relevant Java classes and APIs required to implement these components. With the rules regarding structure, layout, iconography, and typography covered, we then move into animation and transition, possibly Material Design's most powerful concept, allowing complex hierarchies to be displayed simply and stylishly.
+With all the basic technologies and concepts mastered, the book concludes by showing you how these skills can be applied to other platforms, in particular web apps, using the powerful Polymer library.
+
+Functional programming in JavaScript
+Dan Mantyla
+2015
+9781784398224.png
+functional js1.jpg
+This is a fast-paced guide that will help you to write real-world applications by utilizing a wide range of functional techniques and styles.
+
+The book first explores the core concepts of functional programming common to all functional languages, with examples of their use in JavaScript. It's followed by a comprehensive roundup of functional programming libraries for JavaScript that minimizes the burden of digging deep into JavaScript to expose a set of tools that makes functional programming not just possible but highly convenient. The book then rounds off with an overview of methods to effectively use and mix functional programming with object-oriented programming.
+
+Smarty PHP Template Programming And Applications
+by Hasin Hayder (Author), J. P. Maia (Author), Lucian Gheorghe (Author)
+2006
+190481140X.jpg
+Smarty is a templating engine for PHP. Designers who are used to working with HTML files can work with Smarty templates, which are HTML files with simple tags while programmers work with the underlying PHP code. The Smarty engine brings the code and templates together. The result of all this is that designers can concentrate on designing, programmers can concentrate on programming, and they don't need to get in each others way so much. Even if you are developing a site on your own, Smarty is a powerful way to make your code clearer to you and others, as well as easier to debug and modify later. 
+
+
+Bootstrap 4 Site Blueprints
+by Bass Jobsen & David Cochran & Ian Whitley
+2016
+
+9653_5247_Bootstrap 4 Site Blueprints_0.jpg
+
+Packed with trade secrets, this second edition is your one-stop solution to creating websites that will provide the best experience for your users. We cover six popular, real-world examples, where each project teaches you about the various functionalities of Bootstrap 4 and their implementation.
+The book starts off by getting you up and running with the new features of Bootstrap 4 before gradually moving on to customizing your blog with Bootstrap and SASS, building a portfolio site, and turning it into a WordPress theme. In the process, you will learn to recompile Bootstrap files using SASS, design a user interface, and integrate JavaScript plugins. Towards the end of the book, you will also be introduced to integrating Bootstrap 4 with popular application frameworks such as Angular 2, Ruby on Rails, and React.
+
+
+Programming Drupal 7 Entities
+Sammy Spets 
+2013
+6528OS.jpg
+
+This book looks at the Drupal 7 entity paradigm, and breaks down the mystery and confusion that developers face when building custom solutions using entities. It will take you through a number of clear, practical recipes that will help you to take full advantage of Drupal entities in your web solutions without much coding.
+You will also learn how to expose local and remote data to give your legacy data new life as fully-fledged Drupal entities that can be used by other modules such as views, rules, and so on. In addition to this, you'll learn to create, retrieve, update, and delete (CRUD) entities, their properties and fields, along with some programmatic wizardry to manipulate complex entities such as field collections. If you want to develop quickly and easily using Drupal entities, then this is the book for you.

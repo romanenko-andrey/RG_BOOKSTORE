@@ -1,0 +1,16 @@
+- if verified(note)
+  .general-message-wrap.divider-lg
+    .clearfix
+      %span.img-circle.logo-size.inlide-block.pull-left.logo-empty= user_first_letter(note)
+      .ml-70
+        %div
+          .general-message-date.hidden-xs= format_date(note.created_at)
+          .max-240
+            .general-message-verified= checked(note)
+            .general-message-name= user_name(note)
+        .mb-15
+          - note.rating.times do
+            %i.fa.fa-star.rate-star
+          - (5 - note.rating).times do
+            %i.fa.fa-star.rate-star.rate-empty
+        %p= note.text

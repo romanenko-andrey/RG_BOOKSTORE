@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8' />
+    <title>Reek Output</title>
+    <style>
+    * {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #e8eef2;
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      margin: 0;
+    }
+    #header {
+      background-color: #fafbfc;
+      border-bottom: 1px solid #cfdbe2;
+      margin-bottom: 20px;
+      padding: 20px;
+      color: #444444;
+    }
+    h1 {
+      margin: 0;
+    }
+    .total-warnings {
+      color: #f47f7f;
+    }
+    #reek-smells {
+      padding: 20px;
+      width: 100%;
+    }
+    .box {
+      margin-bottom: 20px;
+      background-color: #ffffff;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      border-color: #cfdbe2;
+      -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+      border-top-width: 3px;
+    }
+    .smell-list {
+      margin-bottom: 0px;
+      padding-left: 0px;
+    }
+    .list-item:first-child {
+      border-top-width: 0;
+    }
+    .list-item {
+      border-width: 1px 0;
+      border-radius: 0;
+      position: relative;
+      display: block;
+      padding: 10px 15px;
+      margin-bottom: -1px;
+      background-color: #ffffff;
+      border: 1px solid #f1f2f3;
+    }
+    .list-item > .content:first-child {
+      margin-top: 0px;
+    }
+    .list-item > .content {
+      overflow: hidden;
+    }
+    .list-item > .content > .heading {
+      margin: 0 0 5px 0;
+    }
+    .list-item > .content > small {
+      float: right;
+      color: #909fa7;
+      font-size: 0.8rem;
+    }
+    .list-item > .content > p {
+      margin: 0;
+      color: #656565;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <h1>Reek Output - <span class="total-warnings">115 total warnings</span></h1>
+    </div>
+    <div id="reek-smells">
+      <div class="box">
+        <div class="smell-list">
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>ApplicationCable::Channel</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/channels/application_cable/channel.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>ApplicationCable::Connection</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/channels/application_cable/connection.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>AddressForm</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/address_form.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>ApplicationController</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/application_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>ApplicationController#reload_rails_admin</strong> has the variable name 'm' (UncommunicativeVariableName)</div>
+              <small class="text-muted pull-right">Line [36]</small>
+              <p>
+              <small>app/controllers/application_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>BooksController</strong> assumes too much for instance variable '@book' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/books_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>BooksController</strong> assumes too much for instance variable '@categories_info' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/books_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>BooksController</strong> assumes too much for instance variable '@category' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/books_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>BooksController</strong> assumes too much for instance variable '@note' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/books_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>BooksController</strong> assumes too much for instance variable '@sort_method' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/books_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>BooksController</strong> assumes too much for instance variable '@user' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/books_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>BooksController</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/books_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>BooksController</strong> has at least 8 instance variables (TooManyInstanceVariables)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/books_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CartsController#book_count_changed?</strong> calls 'params[:change]' 2 times (DuplicateMethodCall)</div>
+              <small class="text-muted pull-right">Line [84, 86]</small>
+              <p>
+              <small>app/controllers/carts_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CartsController#set_orders</strong> refers to 'order' more than self (maybe move it to another class?) (FeatureEnvy)</div>
+              <small class="text-muted pull-right">Line [49, 50, 51, 52, 53, 54]</small>
+              <p>
+              <small>app/controllers/carts_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CartsController</strong> assumes too much for instance variable '@cart' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/carts_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CartsController</strong> assumes too much for instance variable '@order' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/carts_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CartsController</strong> assumes too much for instance variable '@orders' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/carts_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CartsController</strong> assumes too much for instance variable '@pos' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/carts_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CartsController</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/carts_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CartsController#set_orders</strong> has approx 8 statements (TooManyStatements)</div>
+              <small class="text-muted pull-right">Line [46]</small>
+              <p>
+              <small>app/controllers/carts_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CheckoutController</strong> assumes too much for instance variable '@orders' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/checkout_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CheckoutController</strong> assumes too much for instance variable '@step' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/checkout_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CheckoutController</strong> assumes too much for instance variable '@update_error' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/checkout_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CheckoutController</strong> assumes too much for instance variable '@user' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/checkout_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CheckoutController</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/checkout_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CheckoutController#show</strong> performs a nil-check (NilCheck)</div>
+              <small class="text-muted pull-right">Line [24]</small>
+              <p>
+              <small>app/controllers/checkout_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>AddressConcern#update_shipping_address</strong> calls '@user.shipping_address' 2 times (DuplicateMethodCall)</div>
+              <small class="text-muted pull-right">Line [30, 32]</small>
+              <p>
+              <small>app/controllers/concerns/address_concern.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>AddressConcern</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/concerns/address_concern.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>AddressConcern#update_addresses?</strong> has approx 7 statements (TooManyStatements)</div>
+              <small class="text-muted pull-right">Line [8]</small>
+              <p>
+              <small>app/controllers/concerns/address_concern.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CreditConcern</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/concerns/credit_concern.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CreditConcern#update_credit_card?</strong> has approx 8 statements (TooManyStatements)</div>
+              <small class="text-muted pull-right">Line [8]</small>
+              <p>
+              <small>app/controllers/concerns/credit_concern.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>DeliveryConcern</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/concerns/delivery_concern.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>DeliveryConcern#update_shipping_method?</strong> performs a nil-check (NilCheck)</div>
+              <small class="text-muted pull-right">Line [13]</small>
+              <p>
+              <small>app/controllers/concerns/delivery_concern.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>DeliveryConcern#update_shipping_method?</strong> has approx 6 statements (TooManyStatements)</div>
+              <small class="text-muted pull-right">Line [11]</small>
+              <p>
+              <small>app/controllers/concerns/delivery_concern.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>OrderConcern#build_new_order</strong> calls '@cart[:credit_card]' 2 times (DuplicateMethodCall)</div>
+              <small class="text-muted pull-right">Line [66, 68]</small>
+              <p>
+              <small>app/controllers/concerns/order_concern.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>OrderConcern#orders_params</strong> calls '@cart[:delivery]' 2 times (DuplicateMethodCall)</div>
+              <small class="text-muted pull-right">Line [28, 29]</small>
+              <p>
+              <small>app/controllers/concerns/order_concern.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>OrderConcern</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/concerns/order_concern.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>OrderConcern#build_new_order</strong> has approx 6 statements (TooManyStatements)</div>
+              <small class="text-muted pull-right">Line [62]</small>
+              <p>
+              <small>app/controllers/concerns/order_concern.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>OrderConcern#create_new_order?</strong> has approx 8 statements (TooManyStatements)</div>
+              <small class="text-muted pull-right">Line [12]</small>
+              <p>
+              <small>app/controllers/concerns/order_concern.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>OrderConcern#generate_order_number</strong> doesn't depend on instance state (maybe move it to another class?) (UtilityFunction)</div>
+              <small class="text-muted pull-right">Line [40]</small>
+              <p>
+              <small>app/controllers/concerns/order_concern.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CreditCardForm</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/credit_card_form.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>OrdersController</strong> assumes too much for instance variable '@order' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/orders_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>OrdersController</strong> assumes too much for instance variable '@orders' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/orders_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>OrdersController</strong> assumes too much for instance variable '@state_order' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/orders_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>OrdersController</strong> assumes too much for instance variable '@states_names_list' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/orders_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>OrdersController</strong> assumes too much for instance variable '@user' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/orders_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>OrdersController</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/orders_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>OrdersController#show</strong> performs a nil-check (NilCheck)</div>
+              <small class="text-muted pull-right">Line [13]</small>
+              <p>
+              <small>app/controllers/orders_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>OrdersController</strong> has at least 7 instance variables (TooManyInstanceVariables)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/orders_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>OrdersController#show</strong> has approx 7 statements (TooManyStatements)</div>
+              <small class="text-muted pull-right">Line [11]</small>
+              <p>
+              <small>app/controllers/orders_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>RegistrationsController#update_resource</strong> refers to 'resource' more than self (maybe move it to another class?) (FeatureEnvy)</div>
+              <small class="text-muted pull-right">Line [36, 38]</small>
+              <p>
+              <small>app/controllers/registrations_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>RegistrationsController</strong> assumes too much for instance variable '@billing_form' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/registrations_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>RegistrationsController</strong> assumes too much for instance variable '@shipping_form' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/registrations_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>RegistrationsController</strong> assumes too much for instance variable '@user' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/registrations_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>RegistrationsController</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/registrations_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>RegistrationsController#update_billing_address</strong> has approx 6 statements (TooManyStatements)</div>
+              <small class="text-muted pull-right">Line [14]</small>
+              <p>
+              <small>app/controllers/registrations_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>RegistrationsController#update_shipping_address</strong> has approx 6 statements (TooManyStatements)</div>
+              <small class="text-muted pull-right">Line [23]</small>
+              <p>
+              <small>app/controllers/registrations_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>StaticPagesController</strong> assumes too much for instance variable '@bestsellers' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/static_pages_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>StaticPagesController</strong> assumes too much for instance variable '@latest_books' (InstanceVariableAssumption)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/static_pages_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>StaticPagesController</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/controllers/static_pages_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>StaticPagesController#index</strong> has approx 7 statements (TooManyStatements)</div>
+              <small class="text-muted pull-right">Line [3]</small>
+              <p>
+              <small>app/controllers/static_pages_controller.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>ApplicationHelper#field_class_when_error</strong> refers to 'errors' more than self (maybe move it to another class?) (FeatureEnvy)</div>
+              <small class="text-muted pull-right">Line [52, 53]</small>
+              <p>
+              <small>app/helpers/application_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>ApplicationHelper#show_error_message</strong> refers to 'errors' more than self (maybe move it to another class?) (FeatureEnvy)</div>
+              <small class="text-muted pull-right">Line [58, 58]</small>
+              <p>
+              <small>app/helpers/application_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>ApplicationHelper</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/helpers/application_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>ApplicationHelper#field_class_when_error</strong> performs a nil-check (NilCheck)</div>
+              <small class="text-muted pull-right">Line [52]</small>
+              <p>
+              <small>app/helpers/application_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>ApplicationHelper#show_error_message</strong> performs a nil-check (NilCheck)</div>
+              <small class="text-muted pull-right">Line [58, 58]</small>
+              <p>
+              <small>app/helpers/application_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>ApplicationHelper#format_date_to_YYYYMMDD</strong> has the name 'format_date_to_YYYYMMDD' (UncommunicativeMethodName)</div>
+              <small class="text-muted pull-right">Line [35]</small>
+              <p>
+              <small>app/helpers/application_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>ApplicationHelper#toEURO</strong> has the name 'toEURO' (UncommunicativeMethodName)</div>
+              <small class="text-muted pull-right">Line [5]</small>
+              <p>
+              <small>app/helpers/application_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>ApplicationHelper#authors_to_string</strong> doesn't depend on instance state (maybe move it to another class?) (UtilityFunction)</div>
+              <small class="text-muted pull-right">Line [23]</small>
+              <p>
+              <small>app/helpers/application_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>ApplicationHelper#countries_select_options</strong> doesn't depend on instance state (maybe move it to another class?) (UtilityFunction)</div>
+              <small class="text-muted pull-right">Line [39]</small>
+              <p>
+              <small>app/helpers/application_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>ApplicationHelper#format_date</strong> doesn't depend on instance state (maybe move it to another class?) (UtilityFunction)</div>
+              <small class="text-muted pull-right">Line [31]</small>
+              <p>
+              <small>app/helpers/application_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>ApplicationHelper#format_date_to_YYYYMMDD</strong> doesn't depend on instance state (maybe move it to another class?) (UtilityFunction)</div>
+              <small class="text-muted pull-right">Line [35]</small>
+              <p>
+              <small>app/helpers/application_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>ApplicationHelper#full_name</strong> doesn't depend on instance state (maybe move it to another class?) (UtilityFunction)</div>
+              <small class="text-muted pull-right">Line [17]</small>
+              <p>
+              <small>app/helpers/application_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>ApplicationHelper#markdown_short</strong> doesn't depend on instance state (maybe move it to another class?) (UtilityFunction)</div>
+              <small class="text-muted pull-right">Line [9]</small>
+              <p>
+              <small>app/helpers/application_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>ApplicationHelper#markdown_text</strong> doesn't depend on instance state (maybe move it to another class?) (UtilityFunction)</div>
+              <small class="text-muted pull-right">Line [13]</small>
+              <p>
+              <small>app/helpers/application_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>BooksHelper#user_first_letter</strong> calls 'note.user' 3 times (DuplicateMethodCall)</div>
+              <small class="text-muted pull-right">Line [8, 8, 9]</small>
+              <p>
+              <small>app/helpers/books_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>BooksHelper#user_first_letter</strong> calls 'note.user.name' 2 times (DuplicateMethodCall)</div>
+              <small class="text-muted pull-right">Line [8, 8]</small>
+              <p>
+              <small>app/helpers/books_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>BooksHelper#user_name</strong> calls 'note.user' 2 times (DuplicateMethodCall)</div>
+              <small class="text-muted pull-right">Line [13, 13]</small>
+              <p>
+              <small>app/helpers/books_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>BooksHelper</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/helpers/books_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>BooksHelper#book_photo</strong> doesn't depend on instance state (maybe move it to another class?) (UtilityFunction)</div>
+              <small class="text-muted pull-right">Line [29]</small>
+              <p>
+              <small>app/helpers/books_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>BooksHelper#checked</strong> doesn't depend on instance state (maybe move it to another class?) (UtilityFunction)</div>
+              <small class="text-muted pull-right">Line [16]</small>
+              <p>
+              <small>app/helpers/books_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>BooksHelper#title_photo</strong> doesn't depend on instance state (maybe move it to another class?) (UtilityFunction)</div>
+              <small class="text-muted pull-right">Line [25]</small>
+              <p>
+              <small>app/helpers/books_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>BooksHelper#user_first_letter</strong> doesn't depend on instance state (maybe move it to another class?) (UtilityFunction)</div>
+              <small class="text-muted pull-right">Line [7]</small>
+              <p>
+              <small>app/helpers/books_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>BooksHelper#user_name</strong> doesn't depend on instance state (maybe move it to another class?) (UtilityFunction)</div>
+              <small class="text-muted pull-right">Line [12]</small>
+              <p>
+              <small>app/helpers/books_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CartsHelper#total_sum</strong> refers to 'y' more than self (maybe move it to another class?) (FeatureEnvy)</div>
+              <small class="text-muted pull-right">Line [12, 12]</small>
+              <p>
+              <small>app/helpers/carts_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CartsHelper</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/helpers/carts_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CartsHelper#delivery?</strong> performs a nil-check (NilCheck)</div>
+              <small class="text-muted pull-right">Line [24]</small>
+              <p>
+              <small>app/helpers/carts_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CartsHelper#total_sum</strong> has the variable name 'x' (UncommunicativeVariableName)</div>
+              <small class="text-muted pull-right">Line [12]</small>
+              <p>
+              <small>app/helpers/carts_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CartsHelper#total_sum</strong> has the variable name 'y' (UncommunicativeVariableName)</div>
+              <small class="text-muted pull-right">Line [12]</small>
+              <p>
+              <small>app/helpers/carts_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CartsHelper#input_value</strong> doesn't depend on instance state (maybe move it to another class?) (UtilityFunction)</div>
+              <small class="text-muted pull-right">Line [3]</small>
+              <p>
+              <small>app/helpers/carts_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CartsHelper#sub_total</strong> doesn't depend on instance state (maybe move it to another class?) (UtilityFunction)</div>
+              <small class="text-muted pull-right">Line [7]</small>
+              <p>
+              <small>app/helpers/carts_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CheckoutHelper</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/helpers/checkout_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CheckoutHelper#book_image_in</strong> doesn't depend on instance state (maybe move it to another class?) (UtilityFunction)</div>
+              <small class="text-muted pull-right">Line [17]</small>
+              <p>
+              <small>app/helpers/checkout_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CheckoutHelper#checout_step</strong> doesn't depend on instance state (maybe move it to another class?) (UtilityFunction)</div>
+              <small class="text-muted pull-right">Line [7]</small>
+              <p>
+              <small>app/helpers/checkout_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>CheckoutHelper#hide_cradit_card_code</strong> doesn't depend on instance state (maybe move it to another class?) (UtilityFunction)</div>
+              <small class="text-muted pull-right">Line [3]</small>
+              <p>
+              <small>app/helpers/checkout_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>DeviseHelper#collect_errors</strong> calls 'flash[msg]' 2 times (DuplicateMethodCall)</div>
+              <small class="text-muted pull-right">Line [24, 24]</small>
+              <p>
+              <small>app/helpers/devise_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>DeviseHelper#collect_errors</strong> calls 'resource.errors' 2 times (DuplicateMethodCall)</div>
+              <small class="text-muted pull-right">Line [27, 27]</small>
+              <p>
+              <small>app/helpers/devise_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>DeviseHelper</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/helpers/devise_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>DeviseHelper#devise_error_messages!</strong> has approx 6 statements (TooManyStatements)</div>
+              <small class="text-muted pull-right">Line [3]</small>
+              <p>
+              <small>app/helpers/devise_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>OrdersHelper</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/helpers/orders_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>OrdersHelper#humanize</strong> doesn't depend on instance state (maybe move it to another class?) (UtilityFunction)</div>
+              <small class="text-muted pull-right">Line [3]</small>
+              <p>
+              <small>app/helpers/orders_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>StaticPagesHelper#active</strong> is controlled by argument 'book_id' (ControlParameter)</div>
+              <small class="text-muted pull-right">Line [4]</small>
+              <p>
+              <small>app/helpers/static_pages_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>StaticPagesHelper#active</strong> is controlled by argument 'first_book_id' (ControlParameter)</div>
+              <small class="text-muted pull-right">Line [4]</small>
+              <p>
+              <small>app/helpers/static_pages_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>StaticPagesHelper</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/helpers/static_pages_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>StaticPagesHelper#active</strong> doesn't depend on instance state (maybe move it to another class?) (UtilityFunction)</div>
+              <small class="text-muted pull-right">Line [3]</small>
+              <p>
+              <small>app/helpers/static_pages_helper.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>ApplicationJob</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [1]</small>
+              <p>
+              <small>app/jobs/application_job.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>Ability#initialize</strong> calls 'user.id' 3 times (DuplicateMethodCall)</div>
+              <small class="text-muted pull-right">Line [17, 19, 20]</small>
+              <p>
+              <small>app/models/ability.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>Ability</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/models/ability.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>Country</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/models/country.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>OrdersState</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/models/orders_state.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>User#self.from_omniauth</strong> calls 'auth.provider' 2 times (DuplicateMethodCall)</div>
+              <small class="text-muted pull-right">Line [26, 27]</small>
+              <p>
+              <small>app/models/user.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>User#self.from_omniauth</strong> calls 'auth.uid' 2 times (DuplicateMethodCall)</div>
+              <small class="text-muted pull-right">Line [26, 28]</small>
+              <p>
+              <small>app/models/user.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>User</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/models/user.rb</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="content">
+              <div class="heading"><strong>ImageUploader</strong> has no descriptive comment (IrresponsibleModule)</div>
+              <small class="text-muted pull-right">Line [2]</small>
+              <p>
+              <small>app/uploaders/image_uploader.rb</small>
+              </p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

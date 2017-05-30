@@ -1,0 +1,12 @@
+%div{ class: ['item', "#{active(@active_book, book)}" ] }
+  .row
+    .col-sm-5
+      .general-img-wrap
+        = image_tag title_photo(book), alt: book.alt, class: ['img-shadow', 'general-thumbnail-img', 'hight-of-carusele-photo']
+    .col-sm-7
+      .mb-60
+        %h1.hight-of-book-title= book.name
+        %p.lead.hight-of-book-description= book.short_description
+        %p.lead.small= authors_to_string(book.authors)
+        .general-align
+          = link_to "Buy Now", book_path(book.id), class: 'btn btn-primary'

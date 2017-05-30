@@ -1,0 +1,37 @@
+en:
+  validation:
+    error_in_phone_code: Phone must start with country code
+    error_in_mmyy_code: 'Error in MM/YY code'
+  review:
+    create:
+      success: Thanks for Review. It will be published as soon as Admin will approve it.
+      error: The error has been find in your messages. Place try again.
+  carts:
+    create:
+      success: Coupon have successfully updated.
+      error: Coupon code is incorrect!
+    update:
+      success:
+        book_add: Book have successfully added.
+        change_sum: Count of book have successfully changed.
+        delete: The book have successfully deleted.
+  checkout:
+    new:
+      empty_list_of_book: You have not select any book to the cart ...'
+    new_order:
+      success: Thank you. Your order state now is 'In Progress'
+      error: Sorry, but there was error until saving the order. Plase try again
+    shipping_method:
+      error: You need to select any method of delivery book to you
+  application:
+    routes:
+      error: Incorrect route. Plase try again
+    view_render:
+      error: Sorry, but there was error until rendering the page. Plase try again
+    checkout_step:
+      error: Sorry, but there was incorrect params in the path routes. Plase try again
+  cancan:
+    access_denied: Sorry, but you are not authorized to access this page
+
+
+ 

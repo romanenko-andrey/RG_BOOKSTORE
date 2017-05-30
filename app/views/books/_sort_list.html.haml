@@ -1,0 +1,4 @@
+%ul.dropdown-menu
+  - Book::SORT_METHODS.each do |method|
+    %li
+      = link_to I18n.t("books.sort_methods.#{method}"), books_path(sort: method)

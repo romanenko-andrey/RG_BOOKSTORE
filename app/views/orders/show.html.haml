@@ -1,0 +1,67 @@
+%main.container.general-main-wrap
+  %h1.general-title-margin= "Order #{@order.number}"
+  .row.mb-20
+    .col-sm-3
+      %h3.general-subtitle Shipping Address
+      %p.general-address
+        = full_name(shipping)
+        %br
+        = shipping.addressee
+        %br
+        = "#{shipping.city} #{shipping.zip}"
+        %br
+        = countries_select_options(shipping.country.to_i).name
+        %br
+        = "Phone #{shipping.phone}"
+    .col-sm-3
+      %h3.general-subtitle Billing Address
+      %p.general-address
+        = full_name(billing)
+        %br
+        = billing.addressee
+        %br
+        = "#{billing.city} #{billing.zip}"
+        %br
+        = countries_select_options(shipping.country.to_i).name
+        %br
+        = "Phone #{billing.phone}"
+    .col-sm-3
+      %h3.general-subtitle Shipments
+      %p.general-address
+        = humanize(@order.delivery_methods)
+        %br
+        = @order.delivery_cost
+    .col-sm-3
+      %h3.general-subtitle Payment Information
+      %p.general-address
+        = hide_cradit_card_code(@order.card_number)
+        %br
+        = @order.mmyy
+
+  = render 'checkout/order_books'
+  
+  .text-center.general-text-right
+    %p.in-gold-500.font-18 Order Summary
+    %table.general-summary-table.general-summary-table-right.general-text-right
+      %tr
+        %td
+          %p.font-16 Subtotal:
+        %td
+          %p.font-16= to_euro(total_sum)
+      %tr
+        %td
+          %p.font-16 Discont:
+        %td
+          %p.font-16= to_euro(@order['discont'])
+      %tr
+        %td
+          %p.font-16 Delivery:
+        %td
+          %p.font-16= to_euro(@order['delivery_cost'])
+      %tr
+        %td
+          %strong.font-18 Order Total:
+        %td
+          %strong.font-18= to_euro(@order['total_cost'])
+    .text-center
+      = link_to "Back", orders_path, class: 'btn btn-default mb-20'

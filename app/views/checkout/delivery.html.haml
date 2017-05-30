@@ -1,0 +1,62 @@
+%main.container.general-main-wrap
+  = render 'checkout_list', step: 2
+
+  %h3.general-subtitle Shipping Method
+  = form_tag(checkout_path, method: 'put') do
+    = hidden_field_tag 'back', "#{back_address}"
+    .visible-xs
+      .general-cart-item.divider-lg-bottom.mb-30
+        - @shipping_list.each_with_index do |list, index|
+          %table.table
+            %tr
+              %td.col-half
+                %span.in-grey-600 Method
+              %td.col-half
+                .form-group.radio.mt-0.mb-0
+                  %label.radio-label
+                    = radio_button_tag "delivery_method", index, checked = selected_method(index), class: "radio-input", hidden: "true"
+                    %span.radio-icon
+                    %span.radio-text= humanize(list[0])
+
+            %tr
+              %td
+                %span.in-grey-600 Days
+              %td
+                %span.font-16.fw-300= list[1]
+            %tr
+              %td
+                %span.in-grey-600 Price
+              %td
+                %span.font-16.in-gold-500= to_euro(list[2])
+      
+    .hidden-xs.mb-res-50
+      %table.table.table-hover
+        %thead
+          %tr
+            %th.col-method
+              %span.in-grey-600.ml-40 Method
+            %th
+              %span.in-grey-600 Days
+            %th
+              %span.in-grey-600 Price
+        %tbody
+          - @shipping_list.each_with_index do |list, index|
+            %tr
+              %td
+                .form-group.radio.mt-0.mb-0
+                  %label.radio-label
+                    = radio_button_tag "delivery_method", index, checked = selected_method(index), class: "radio-input", hidden: "true"
+                    %span.radio-icon
+                    %span.radio-text= humanize(list[0])
+
+              %td
+                %span= list[1]
+              %td
+                %span.font-16.in-gold-500= to_euro(list[2])
+     
+    .general-text-align
+      %p.in-gold-500.font-18 Order Summary
+      %table.general-summary-table
+        = render 'summary'
+    .text-center
+      %button.btn.btn-default.mb-20 Save and Continue
